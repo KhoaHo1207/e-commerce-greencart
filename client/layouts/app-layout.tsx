@@ -2,7 +2,6 @@
 
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-import { Toaster } from "@/components/ui/sonner";
 import { usePathname } from "next/navigation";
 import React from "react";
 
@@ -17,11 +16,14 @@ export default function AppLayout({ children }: Props) {
   return (
     <>
       {isSellerPath ? null : <Navbar />}
-      <main className={`${isSellerPath ? "" : "md:px-16 lg:px-24 xl:px-32"}`}>
+      <main
+        className={`${
+          isSellerPath ? "" : "md:px-16 lg:px-24 xl:px-32 min-h-screen"
+        }`}
+      >
         {children}
       </main>
-      <Footer />
-      <Toaster position="top-right" richColors />
+      {isSellerPath ? null : <Footer />}
     </>
   );
 }

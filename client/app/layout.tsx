@@ -1,6 +1,6 @@
 import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 import { AppContextProvider } from "@/contexts/app-provider";
-import AppLayout from "@/layouts/app-layout";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
@@ -25,7 +25,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col">
         <AppContextProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-            <AppLayout>{children}</AppLayout>
+            {children}
+            <Toaster position="top-right" richColors />
           </ThemeProvider>
         </AppContextProvider>
       </body>

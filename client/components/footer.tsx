@@ -57,7 +57,8 @@ export default function Footer() {
         </div>
       </div>
       <p className="py-4 text-center text-sm md:text-base text-muted-foreground">
-        Copyright 2026 © <Link href="/">Khoa Dev</Link> All Right Reserved.
+        Copyright {new Date().getFullYear()} © <Link href="/">Khoa.dev</Link>{" "}
+        All Right Reserved.
       </p>
     </footer>
   );
