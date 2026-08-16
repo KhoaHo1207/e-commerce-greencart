@@ -6,6 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import Logo from "./logo";
+import { ModeToggle } from "./mode-toggle";
 
 const menuItems = [
   {
@@ -62,10 +63,11 @@ export default function Navbar() {
             viewBox="0 0 16 16"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            className="text-foreground"
           >
             <path
               d="M10.836 10.615 15 14.695"
-              stroke="#3e2723"
+              stroke="currentColor"
               strokeWidth="1.2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -73,7 +75,7 @@ export default function Navbar() {
             <path
               clipRule="evenodd"
               d="M9.141 11.738c2.729-1.136 4.001-4.224 2.841-6.898S7.67.921 4.942 2.057C2.211 3.193.94 6.281 2.1 8.955s4.312 3.92 7.041 2.783"
-              stroke="#3e2723"
+              stroke="currentColor"
               strokeWidth="1.2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -88,21 +90,22 @@ export default function Navbar() {
             viewBox="0 0 14 14"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
+            className="text-foreground"
           >
             <path
               d="M.583.583h2.333l1.564 7.81a1.17 1.17 0 0 0 1.166.94h5.67a1.17 1.17 0 0 0 1.167-.94l.933-4.893H3.5m2.333 8.75a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0m6.417 0a.583.583 0 1 1-1.167 0 .583.583 0 0 1 1.167 0"
-              stroke="#3e2723"
+              stroke="currentColor"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
           </svg>
-          <button className="absolute -top-2 -right-3 text-xs text-white bg-primary w-[18px] h-[18px] rounded-full">
+          <button className="absolute -top-2 -right-3 text-xs text-primary-foreground bg-primary w-[18px] h-[18px] rounded-full">
             3
           </button>
         </div>
 
         {!user ? (
-          <button className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary/80 transition text-white rounded-full">
+          <button className="cursor-pointer px-8 py-2 bg-primary hover:bg-primary/80 transition text-primary-foreground rounded-full">
             Login
           </button>
         ) : (
@@ -126,6 +129,8 @@ export default function Navbar() {
             </ul>
           </div>
         )}
+
+        <ModeToggle />
       </div>
 
       <button
@@ -140,10 +145,25 @@ export default function Navbar() {
           viewBox="0 0 21 15"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="text-foreground"
         >
-          <rect width="21" height="1.5" rx=".75" fill="#3e2723" />
-          <rect x="8" y="6" width="13" height="1.5" rx=".75" fill="#3e2723" />
-          <rect x="6" y="13" width="15" height="1.5" rx=".75" fill="#3e2723" />
+          <rect width="21" height="1.5" rx=".75" fill="currentColor" />
+          <rect
+            x="8"
+            y="6"
+            width="13"
+            height="1.5"
+            rx=".75"
+            fill="currentColor"
+          />
+          <rect
+            x="6"
+            y="13"
+            width="15"
+            height="1.5"
+            rx=".75"
+            fill="currentColor"
+          />
         </svg>
       </button>
 
@@ -163,7 +183,7 @@ export default function Navbar() {
             Login
           </Link>
         ) : (
-          <button className="cursor-pointer px-6 py-2 mt-2 bg-primary hover:bg-primary/80 transition text-white rounded-full text-sm">
+          <button className="cursor-pointer px-6 py-2 mt-2 bg-primary hover:bg-primary/80 transition text-primary-foreground rounded-full text-sm">
             Logout
           </button>
         )}

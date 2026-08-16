@@ -11,7 +11,7 @@ export default function ProductCard({ product }: { product: Product }) {
   const { currency } = useAppContext();
 
   return (
-    <div className="border border-border rounded-md md:px-4 px-3 py-2 bg-background min-w-56 max-w-56 w-full">
+    <div className="border border-border rounded-md md:px-4 px-3 py-2 bg-card text-card-foreground min-w-56 max-w-56 w-full">
       <div className="group cursor-pointer flex items-center justify-center px-2">
         <Image
           className="group-hover:scale-105 transition max-w-26 md:max-w-36"
