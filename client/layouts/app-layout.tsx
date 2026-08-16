@@ -1,5 +1,7 @@
 "use client";
 
+import Navbar from "@/components/navbar";
+import { Toaster } from "@/components/ui/sonner";
 import { usePathname } from "next/navigation";
 import React from "react";
 
@@ -10,10 +12,14 @@ interface Props {
 export default function AppLayout({ children }: Props) {
   const pathname = usePathname();
 
-  const isSeller = pathname.startsWith("/seller");
+  const isSellerPath = pathname.startsWith("/seller");
   return (
-    <main className={`${isSeller ? "" : "md:px-16 lg:px-24 xl:px-32"}`}>
-      {children}
-    </main>
+    <>
+      {isSellerPath ? null : <Navbar />}
+      <main className={`${isSellerPath ? "" : "md:px-16 lg:px-24 xl:px-32"}`}>
+        {children}
+      </main>
+      <Toaster position="top-right" richColors />
+    </>
   );
 }

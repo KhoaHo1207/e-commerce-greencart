@@ -1,74 +1,74 @@
-import logo from "@/public/images/logo.svg";
-import search_icon from "@/public/images/search_icon.svg";
-import remove_icon from "@/public/images/remove_icon.svg";
-import arrow_right_icon_colored from "@/public/images/arrow_right_icon_colored.svg";
-import star_icon from "@/public/images/star_icon.svg";
-import star_dull_icon from "@/public/images/star_dull_icon.svg";
-import cart_icon from "@/public/images/cart_icon.svg";
-import nav_cart_icon from "@/public/images/nav_cart_icon.svg";
+import add_address_iamge from "@/public/images/add_address_image.svg";
 import add_icon from "@/public/images/add_icon.svg";
-import refresh_icon from "@/public/images/refresh_icon.svg";
-import product_list_icon from "@/public/images/product_list_icon.svg";
-import order_icon from "@/public/images/order_icon.svg";
-import upload_area from "@/public/images/upload_area.png";
-import profile_icon from "@/public/images/profile_icon.png";
-import menu_icon from "@/public/images/menu_icon.svg";
-import delivery_truck_icon from "@/public/images/delivery_truck_icon.svg";
-import leaf_icon from "@/public/images/leaf_icon.svg";
-import coin_icon from "@/public/images/coin_icon.svg";
-import box_icon from "@/public/images/box_icon.svg";
-import trust_icon from "@/public/images/trust_icon.svg";
+import amul_milk_image from "@/public/images/amul_milk_image.png";
+import apple_image from "@/public/images/apple_image.png";
+import arrow_right_icon_colored from "@/public/images/arrow_right_icon_colored.svg";
+import bakery_image from "@/public/images/bakery_image.png";
+import banana_image_1 from "@/public/images/banana_image_1.png";
+import barley_image from "@/public/images/barley_image.png";
+import basmati_rice_image from "@/public/images/basmati_rice_image.png";
 import black_arrow_icon from "@/public/images/black_arrow_icon.svg";
-import white_arrow_icon from "@/public/images/white_arrow_icon.svg";
-import main_banner_bg from "@/public/images/main_banner_bg.png";
-import main_banner_bg_sm from "@/public/images/main_banner_bg_sm.png";
+import bottles_image from "@/public/images/bottles_image.png";
 import bottom_banner_image from "@/public/images/bottom_banner_image.png";
 import bottom_banner_image_sm from "@/public/images/bottom_banner_image_sm.png";
-import add_address_iamge from "@/public/images/add_address_image.svg";
-import organic_vegitable_image from "@/public/images/organic_vegitable_image.png";
-import fresh_fruits_image from "@/public/images/fresh_fruits_image.png";
-import bottles_image from "@/public/images/bottles_image.png";
-import maggi_image from "@/public/images/maggi_image.png";
+import box_icon from "@/public/images/box_icon.svg";
+import brown_bread_image from "@/public/images/brown_bread_image.png";
+import brown_rice_image from "@/public/images/brown_rice_image.png";
+import butter_croissant_image from "@/public/images/butter_croissant_image.png";
+import carrot_image from "@/public/images/carrot_image.png";
+import cart_icon from "@/public/images/cart_icon.svg";
+import cheese_image from "@/public/images/cheese_image.png";
+import chocolate_cake_image from "@/public/images/chocolate_cake_image.png";
+import coca_cola_image from "@/public/images/coca_cola_image.png";
+import coin_icon from "@/public/images/coin_icon.svg";
 import dairy_product_image from "@/public/images/dairy_product_image.png";
-import bakery_image from "@/public/images/bakery_image.png";
+import delivery_truck_icon from "@/public/images/delivery_truck_icon.svg";
+import eggs_image from "@/public/images/eggs_image.png";
+import fanta_image_1 from "@/public/images/fanta_image_1.png";
+import fresh_fruits_image from "@/public/images/fresh_fruits_image.png";
 import grain_image from "@/public/images/grain_image.png";
+import grapes_image_1 from "@/public/images/grapes_image_1.png";
+import knorr_soup_image from "@/public/images/knorr_soup_image.png";
+import leaf_icon from "@/public/images/leaf_icon.svg";
+import logo from "@/public/images/logo.svg";
+import maggi_image from "@/public/images/maggi_image.png";
+import maggi_oats_image from "@/public/images/maggi_oats_image.png";
+import main_banner_bg from "@/public/images/main_banner_bg.png";
+import main_banner_bg_sm from "@/public/images/main_banner_bg_sm.png";
+import mango_image_1 from "@/public/images/mango_image_1.png";
+import menu_icon from "@/public/images/menu_icon.svg";
+import nav_cart_icon from "@/public/images/nav_cart_icon.svg";
+import onion_image_1 from "@/public/images/onion_image_1.png";
+import orange_image from "@/public/images/orange_image.png";
+import order_icon from "@/public/images/order_icon.svg";
+import organic_vegitable_image from "@/public/images/organic_vegitable_image.png";
+import paneer_image from "@/public/images/paneer_image.png";
+import paneer_image_2 from "@/public/images/paneer_image_2.png";
+import pepsi_image from "@/public/images/pepsi_image.png";
 import potato_image_1 from "@/public/images/potato_image_1.png";
 import potato_image_2 from "@/public/images/potato_image_2.png";
 import potato_image_3 from "@/public/images/potato_image_3.png";
 import potato_image_4 from "@/public/images/potato_image_4.png";
-import tomato_image from "@/public/images/tomato_image.png";
-import carrot_image from "@/public/images/carrot_image.png";
-import apple_image from "@/public/images/apple_image.png";
-import amul_milk_image from "@/public/images/amul_milk_image.png";
-import coca_cola_image from "@/public/images/coca_cola_image.png";
-import brown_bread_image from "@/public/images/brown_bread_image.png";
-import basmati_rice_image from "@/public/images/basmati_rice_image.png";
-import paneer_image from "@/public/images/paneer_image.png";
-import orange_image from "@/public/images/orange_image.png";
-import pepsi_image from "@/public/images/pepsi_image.png";
-import wheat_flour_image from "@/public/images/wheat_flour_image.png";
-import cheese_image from "@/public/images/cheese_image.png";
-import eggs_image from "@/public/images/eggs_image.png";
-import spinach_image_1 from "@/public/images/spinach_image_1.png";
-import onion_image_1 from "@/public/images/onion_image_1.png";
-import banana_image_1 from "@/public/images/banana_image_1.png";
-import mango_image_1 from "@/public/images/mango_image_1.png";
-import grapes_image_1 from "@/public/images/grapes_image_1.png";
-import paneer_image_2 from "@/public/images/paneer_image_2.png";
-import sprite_image_1 from "@/public/images/sprite_image_1.png";
-import fanta_image_1 from "@/public/images/fanta_image_1.png";
-import seven_up_image_1 from "@/public/images/seven_up_image_1.png";
-import top_ramen_image from "@/public/images/top_ramen_image.png";
-import knorr_soup_image from "@/public/images/knorr_soup_image.png";
-import yippee_image from "@/public/images/yippee_image.png";
-import maggi_oats_image from "@/public/images/maggi_oats_image.png";
-import butter_croissant_image from "@/public/images/butter_croissant_image.png";
-import chocolate_cake_image from "@/public/images/chocolate_cake_image.png";
-import whole_wheat_bread_image from "@/public/images/whole_wheat_bread_image.png";
-import vanilla_muffins_image from "@/public/images/vanilla_muffins_image.png";
+import product_list_icon from "@/public/images/product_list_icon.svg";
+import profile_icon from "@/public/images/profile_icon.png";
 import quinoa_image from "@/public/images/quinoa_image.png";
-import brown_rice_image from "@/public/images/brown_rice_image.png";
-import barley_image from "@/public/images/barley_image.png";
+import refresh_icon from "@/public/images/refresh_icon.svg";
+import remove_icon from "@/public/images/remove_icon.svg";
+import search_icon from "@/public/images/search_icon.svg";
+import seven_up_image_1 from "@/public/images/seven_up_image_1.png";
+import spinach_image_1 from "@/public/images/spinach_image_1.png";
+import sprite_image_1 from "@/public/images/sprite_image_1.png";
+import star_dull_icon from "@/public/images/star_dull_icon.svg";
+import star_icon from "@/public/images/star_icon.svg";
+import tomato_image from "@/public/images/tomato_image.png";
+import top_ramen_image from "@/public/images/top_ramen_image.png";
+import trust_icon from "@/public/images/trust_icon.svg";
+import upload_area from "@/public/images/upload_area.png";
+import vanilla_muffins_image from "@/public/images/vanilla_muffins_image.png";
+import wheat_flour_image from "@/public/images/wheat_flour_image.png";
+import white_arrow_icon from "@/public/images/white_arrow_icon.svg";
+import whole_wheat_bread_image from "@/public/images/whole_wheat_bread_image.png";
+import yippee_image from "@/public/images/yippee_image.png";
 
 export const assets = {
   logo,
@@ -209,6 +209,7 @@ export const dummyProducts = [
     price: 25,
     offerPrice: 20,
     image: [potato_image_1, potato_image_2, potato_image_3, potato_image_4],
+    rating: 4.5,
     description: [
       "Fresh and organic",
       "Rich in carbohydrates",
@@ -225,6 +226,7 @@ export const dummyProducts = [
     price: 40,
     offerPrice: 35,
     image: [tomato_image],
+    rating: 4.5,
     description: [
       "Juicy and ripe",
       "Rich in Vitamin C",
@@ -242,6 +244,7 @@ export const dummyProducts = [
     price: 30,
     offerPrice: 28,
     image: [carrot_image],
+    rating: 4.5,
     description: [
       "Sweet and crunchy",
       "Good for eyesight",
@@ -258,6 +261,7 @@ export const dummyProducts = [
     price: 18,
     offerPrice: 15,
     image: [spinach_image_1],
+    rating: 4.5,
     description: [
       "Rich in iron",
       "High in vitamins",
@@ -274,6 +278,7 @@ export const dummyProducts = [
     price: 22,
     offerPrice: 19,
     image: [onion_image_1],
+    rating: 4.5,
     description: [
       "Fresh and pungent",
       "Perfect for cooking",
@@ -292,6 +297,7 @@ export const dummyProducts = [
     price: 120,
     offerPrice: 110,
     image: [apple_image],
+    rating: 4.5,
     description: [
       "Crisp and juicy",
       "Rich in fiber",
@@ -310,6 +316,7 @@ export const dummyProducts = [
     price: 80,
     offerPrice: 75,
     image: [orange_image],
+    rating: 4,
     description: [
       "Juicy and sweet",
       "Rich in Vitamin C",
@@ -326,6 +333,7 @@ export const dummyProducts = [
     price: 50,
     offerPrice: 45,
     image: [banana_image_1],
+    rating: 4,
     description: [
       "Sweet and ripe",
       "High in potassium",
@@ -339,10 +347,10 @@ export const dummyProducts = [
     _id: "ek54j45k",
     name: "Mango 1 kg",
     category: "Fruits",
-
     price: 150,
     offerPrice: 140,
     image: [mango_image_1],
+    rating: 4.5,
     description: [
       "Sweet and flavorful",
       "Perfect for smoothies and desserts",
@@ -359,6 +367,7 @@ export const dummyProducts = [
     price: 70,
     offerPrice: 65,
     image: [grapes_image_1],
+    rating: 5,
     description: [
       "Fresh and juicy",
       "Rich in antioxidants",
@@ -377,6 +386,7 @@ export const dummyProducts = [
     price: 60,
     offerPrice: 55,
     image: [amul_milk_image],
+    rating: 4.5,
     description: [
       "Pure and fresh",
       "Rich in calcium",
@@ -394,6 +404,7 @@ export const dummyProducts = [
     price: 90,
     offerPrice: 85,
     image: [paneer_image],
+    rating: 4.5,
     description: [
       "Soft and fresh",
       "Rich in protein",
@@ -410,6 +421,7 @@ export const dummyProducts = [
     price: 90,
     offerPrice: 85,
     image: [eggs_image],
+    rating: 4.5,
     description: [
       "Farm fresh",
       "Rich in protein",
@@ -426,6 +438,7 @@ export const dummyProducts = [
     price: 90,
     offerPrice: 85,
     image: [paneer_image_2],
+    rating: 4.5,
     description: [
       "Soft and fresh",
       "Rich in protein",
@@ -442,6 +455,7 @@ export const dummyProducts = [
     price: 140,
     offerPrice: 130,
     image: [cheese_image],
+    rating: 4.5,
     description: [
       "Creamy and delicious",
       "Perfect for pizzas and sandwiches",
@@ -460,6 +474,7 @@ export const dummyProducts = [
     price: 80,
     offerPrice: 75,
     image: [coca_cola_image],
+    rating: 4.5,
     description: [
       "Refreshing and fizzy",
       "Perfect for parties and gatherings",
@@ -476,6 +491,7 @@ export const dummyProducts = [
     price: 78,
     offerPrice: 73,
     image: [pepsi_image],
+    rating: 4.5,
     description: [
       "Chilled and refreshing",
       "Perfect for celebrations",
@@ -492,6 +508,7 @@ export const dummyProducts = [
     price: 79,
     offerPrice: 74,
     image: [sprite_image_1],
+    rating: 4.5,
     description: [
       "Refreshing citrus taste",
       "Perfect for hot days",
@@ -508,6 +525,7 @@ export const dummyProducts = [
     price: 77,
     offerPrice: 72,
     image: [fanta_image_1],
+    rating: 4.5,
     description: [
       "Sweet and fizzy",
       "Great for parties and gatherings",
@@ -524,6 +542,7 @@ export const dummyProducts = [
     price: 76,
     offerPrice: 71,
     image: [seven_up_image_1],
+    rating: 4.5,
     description: [
       "Refreshing lemon-lime flavor",
       "Perfect for refreshing",
@@ -542,6 +561,7 @@ export const dummyProducts = [
     price: 550,
     offerPrice: 520,
     image: [basmati_rice_image],
+    rating: 4.5,
     description: [
       "Long grain and aromatic",
       "Perfect for biryani and pulao",
@@ -558,6 +578,7 @@ export const dummyProducts = [
     price: 250,
     offerPrice: 230,
     image: [wheat_flour_image],
+    rating: 4.5,
     description: [
       "High-quality whole wheat",
       "Soft and fluffy rotis",
@@ -574,6 +595,7 @@ export const dummyProducts = [
     price: 450,
     offerPrice: 420,
     image: [quinoa_image],
+    rating: 4.5,
     description: [
       "High in protein and fiber",
       "Gluten-free",
@@ -590,6 +612,7 @@ export const dummyProducts = [
     price: 120,
     offerPrice: 110,
     image: [brown_rice_image],
+    rating: 4.5,
     description: [
       "Whole grain and nutritious",
       "Helps in weight management",
@@ -606,6 +629,7 @@ export const dummyProducts = [
     price: 150,
     offerPrice: 140,
     image: [barley_image],
+    rating: 4.5,
     description: [
       "Rich in fiber",
       "Helps improve digestion",
@@ -624,6 +648,7 @@ export const dummyProducts = [
     price: 40,
     offerPrice: 35,
     image: [brown_bread_image],
+    rating: 4.5,
     description: [
       "Soft and healthy",
       "Made from whole wheat",
@@ -640,6 +665,7 @@ export const dummyProducts = [
     price: 50,
     offerPrice: 45,
     image: [butter_croissant_image],
+    rating: 4.5,
     description: [
       "Flaky and buttery",
       "Freshly baked",
@@ -656,6 +682,7 @@ export const dummyProducts = [
     price: 350,
     offerPrice: 325,
     image: [chocolate_cake_image],
+    rating: 4.5,
     description: [
       "Rich and moist",
       "Made with premium cocoa",
@@ -672,6 +699,7 @@ export const dummyProducts = [
     price: 45,
     offerPrice: 40,
     image: [whole_wheat_bread_image],
+    rating: 4.5,
     description: [
       "Healthy and nutritious",
       "Made with whole wheat flour",
@@ -688,6 +716,7 @@ export const dummyProducts = [
     price: 100,
     offerPrice: 90,
     image: [vanilla_muffins_image],
+    rating: 4.5,
     description: [
       "Soft and fluffy",
       "Perfect for a quick snack",
@@ -703,10 +732,10 @@ export const dummyProducts = [
     _id: "in01f25u",
     name: "Maggi Noodles 280g",
     category: "Instant",
-
     price: 55,
     offerPrice: 50,
     image: [maggi_image],
+    rating: 4.5,
     description: [
       "Instant and easy to cook",
       "Delicious taste",
@@ -723,6 +752,7 @@ export const dummyProducts = [
     price: 45,
     offerPrice: 40,
     image: [top_ramen_image],
+    rating: 4.5,
     description: [
       "Quick and easy to prepare",
       "Spicy and flavorful",
@@ -739,6 +769,7 @@ export const dummyProducts = [
     price: 35,
     offerPrice: 30,
     image: [knorr_soup_image],
+    rating: 4.5,
     description: [
       "Convenient for on-the-go",
       "Healthy and nutritious",
@@ -755,6 +786,7 @@ export const dummyProducts = [
     price: 50,
     offerPrice: 45,
     image: [yippee_image],
+    rating: 4.5,
     description: [
       "Non-fried noodles for healthier choice",
       "Tasty and filling",
@@ -771,6 +803,7 @@ export const dummyProducts = [
     price: 40,
     offerPrice: 35,
     image: [maggi_oats_image],
+    rating: 4.5,
     description: [
       "Healthy alternative with oats",
       "Good for digestion",

@@ -1,3 +1,4 @@
+import BestSeller from "./_components/best-seller";
 import Categories from "./_components/categories";
 import Mainbanner from "./_components/main-banner";
 
@@ -6,6 +7,7 @@ export default function HomePage() {
     <div className="mt-10">
       <Mainbanner />
       <Categories />
+      <BestSeller />
     </div>
   );
 }

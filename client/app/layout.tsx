@@ -1,4 +1,3 @@
-import Navbar from "@/components/navbar";
 import { AppContextProvider } from "@/contexts/app-provider";
 import AppLayout from "@/layouts/app-layout";
 import type { Metadata } from "next";
@@ -24,7 +23,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <html lang="en" className={`${outfit.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <AppContextProvider>
-          <Navbar />
           <AppLayout>{children}</AppLayout>
         </AppContextProvider>
       </body>
