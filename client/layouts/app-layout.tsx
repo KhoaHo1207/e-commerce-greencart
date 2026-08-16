@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { Toaster } from "@/components/ui/sonner";
 import { usePathname } from "next/navigation";
@@ -19,6 +20,7 @@ export default function AppLayout({ children }: Props) {
       <main className={`${isSellerPath ? "" : "md:px-16 lg:px-24 xl:px-32"}`}>
         {children}
       </main>
+      <Footer />
       <Toaster position="top-right" richColors />
     </>
   );
