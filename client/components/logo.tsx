@@ -10,6 +10,7 @@ export default function Logo() {
         width={100}
         height={100}
         className="object-contain w-34 md:w-38 cursor-pointer"
+        loading="eager"
       />
     </Link>
   );

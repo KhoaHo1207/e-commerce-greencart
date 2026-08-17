@@ -1,6 +1,6 @@
-import Navbar from "@/components/navbar";
+import { ThemeProvider } from "@/components/theme-provider";
+import { Toaster } from "@/components/ui/sonner";
 import { AppContextProvider } from "@/contexts/app-provider";
-import AppLayout from "@/layouts/app-layout";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
@@ -21,11 +21,22 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${outfit.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${outfit.variable} h-full antialiased`}
+      suppressHydrationWarning
+    >
       <body className="min-h-full flex flex-col">
         <AppContextProvider>
-          <Navbar />
-          <AppLayout>{children}</AppLayout>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            {children}
+            <Toaster position="top-right" richColors />
+          </ThemeProvider>
         </AppContextProvider>
       </body>
     </html>

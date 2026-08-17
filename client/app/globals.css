@@ -201,9 +201,27 @@
     @apply bg-background text-foreground;
   }
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border outline-ring/50 scroll-smooth;
   }
   html {
     @apply font-outfit;
   }
+}
+
+button {
+  @apply cursor-pointer;
+}
+
+.embla__viewport {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+  touch-action: pan-y pinch-zoom;
+}
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
 }

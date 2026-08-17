@@ -1,5 +1,7 @@
 "use client";
 
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
 import { usePathname } from "next/navigation";
 import React from "react";
 
@@ -10,10 +12,21 @@ interface Props {
 export default function AppLayout({ children }: Props) {
   const pathname = usePathname();
 
-  const isSeller = pathname.startsWith("/seller");
+  const isSellerPath = pathname.startsWith("/seller");
+  const isAuthPath =
+    pathname.startsWith("/sign-in") || pathname.startsWith("/sign-up");
+
+  if (isAuthPath) {
+    return <>{children}</>;
+  }
+
   return (
-    <main className={`${isSeller ? "" : "md:px-16 lg:px-24 xl:px-32"}`}>
-      {children}
-    </main>
+    <>
+      {isSellerPath ? null : <Navbar />}
+      <main className={isSellerPath ? "" : "md:px-16 lg:px-24 xl:px-32"}>
+        {children}
+      </main>
+      {isSellerPath ? null : <Footer />}
+    </>
   );
 }
