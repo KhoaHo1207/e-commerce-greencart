@@ -207,3 +207,7 @@
     @apply font-outfit;
   }
 }
+
+button {
+  @apply cursor-pointer;
+}
