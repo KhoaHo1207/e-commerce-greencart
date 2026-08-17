@@ -1,24 +1,24 @@
 import { Metadata } from "next";
-import Link from "next/link";
 import SignInForm from "./_components/form";
 
 export const metadata: Metadata = {
   title: "Sign In",
-  description: "Sign in to your account",
+  description: "Sign in to your GreenCart account",
 };
 
 export default function SignInPage() {
   return (
-    <div className="flex flex-col items-center justify-center mx-auto max-w-md border border-border p-4 rounded w-full">
-      <span className="text-2xl font-semibold mb-6">
+    <section
+      aria-labelledby="sign-in-heading"
+      className="w-full max-w-md rounded-lg border border-border bg-card text-card-foreground p-6 sm:p-8"
+    >
+      <h1
+        id="sign-in-heading"
+        className="text-2xl font-semibold text-center mb-6 text-foreground"
+      >
         <span className="text-primary">User</span> Sign In
-      </span>
-
+      </h1>
       <SignInForm />
-
-      <Link href={"/"} className="text-primary hover:underline mt-6 text-sm">
-        Back to Home
-      </Link>
-    </div>
+    </section>
   );
 }
