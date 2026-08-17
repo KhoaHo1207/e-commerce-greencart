@@ -13,13 +13,16 @@ export default function AppLayout({ children }: Props) {
   const pathname = usePathname();
 
   const isSellerPath = pathname.startsWith("/seller");
+
+  const isAuthPath =
+    pathname.startsWith("/sign-in") || pathname.startsWith("/sign-up");
   return (
     <>
-      {isSellerPath ? null : <Navbar />}
+      {isSellerPath || isAuthPath ? null : <Navbar />}
       <main className={`${isSellerPath ? "" : "md:px-16 lg:px-24 xl:px-32"}`}>
         {children}
       </main>
-      {isSellerPath ? null : <Footer />}
+      {isSellerPath || isAuthPath ? null : <Footer />}
     </>
   );
 }
