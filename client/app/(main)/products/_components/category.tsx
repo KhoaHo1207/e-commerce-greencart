@@ -1,7 +1,7 @@
 "use client";
 
 import { useAppContext } from "@/contexts/app-provider";
-import { toCategorySlug } from "@/hooks/use-product";
+import { toCategorySlug } from "@/lib/slug";
 import type { Category } from "@/types/category";
 import Link from "next/link";
 import { useParams } from "next/navigation";
@@ -14,27 +14,32 @@ export default function CategoryNav() {
   return (
     <>
       {categories && categories.length > 0 ? (
-        <div className="flex flex-wrap gap-2 items-center mt-8">
-          <Link
-            href="/products"
-            className={`text-sm border border-border rounded px-4 py-2 cursor-pointer hover:bg-muted transition-all duration-300 ${
-              !activeCategory ? "bg-muted" : ""
-            }`}
-          >
-            All
-          </Link>
-          {categories.map((cat) => {
-            const slug = toCategorySlug(cat.path);
-            return (
-              <CategoryItem
-                key={cat.text}
-                category={cat}
-                slug={slug}
-                isActive={slug === activeCategory}
-              />
-            );
-          })}
-        </div>
+        <nav aria-label="Filter by category" className="mt-8">
+          <ul className="flex flex-wrap gap-2 items-center">
+            <li>
+              <Link
+                href="/products"
+                className={`text-sm border border-border rounded px-4 py-2 hover:bg-muted transition-all duration-300 ${
+                  !activeCategory ? "bg-muted" : ""
+                }`}
+              >
+                All
+              </Link>
+            </li>
+            {categories.map((cat) => {
+              const slug = toCategorySlug(cat.path);
+              return (
+                <li key={cat.text}>
+                  <CategoryItem
+                    category={cat}
+                    slug={slug}
+                    isActive={slug === activeCategory}
+                  />
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
       ) : null}
     </>
   );
@@ -54,7 +59,7 @@ function CategoryItem({
       className={`text-sm border border-border rounded px-4 py-2 cursor-pointer hover:bg-muted transition-all duration-300 ${
         isActive ? "bg-muted" : ""
       }`}
-      href={`/products/${slug}`}
+      href={`/products/${toCategorySlug(category.path)}`}
     >
       {category.text}
     </Link>

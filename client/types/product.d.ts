@@ -3,6 +3,7 @@ import { StaticImageData } from "next/image";
 export type Product = {
   _id: string;
   name: string;
+  slug: string;
   category: string;
   price: number;
   offerPrice: number;

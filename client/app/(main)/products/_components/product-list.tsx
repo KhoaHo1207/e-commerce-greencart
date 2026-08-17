@@ -2,7 +2,8 @@
 
 import ProductCard from "@/components/product-card";
 import { useAppContext } from "@/contexts/app-provider";
-import { toCategorySlug, useFilterProducts } from "@/hooks/use-product";
+import { useFilterProducts } from "@/hooks/use-product";
+import { toCategorySlug } from "@/lib/slug";
 import { notFound } from "next/navigation";
 
 export default function ProductList({ category }: { category?: string }) {
@@ -18,21 +19,23 @@ export default function ProductList({ category }: { category?: string }) {
 
   return (
     <>
-      <div className="mt-6">
+      <p className="mt-6">
         Results: <span className="font-bold text-primary">{totalProducts}</span>{" "}
         found
-      </div>
+      </p>
 
       {filteredProducts.length > 0 ? (
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 mt-6">
+        <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-5 mt-6">
           {filteredProducts.map((product) => (
-            <ProductCard key={product._id} product={product} />
+            <li key={product._id} className="min-w-0">
+              <ProductCard product={product} />
+            </li>
           ))}
-        </div>
+        </ul>
       ) : (
-        <div className="mt-16 italic text-center text-lg text-muted-foreground">
+        <p className="mt-16 italic text-center text-lg text-muted-foreground">
           No products found
-        </div>
+        </p>
       )}
     </>
   );

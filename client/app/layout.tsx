@@ -12,11 +12,21 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://greencart.local"),
   title: {
-    default: "GreenCart",
+    default: "GreenCart — Fresh Groceries Delivered",
     template: "%s | GreenCart",
   },
-  description: "GreenCart is a platform for buying and selling green products",
+  description:
+    "Shop fresh groceries, fruits, vegetables, dairy, and daily essentials. Fast delivery and great savings with GreenCart.",
+  openGraph: {
+    title: "GreenCart — Fresh Groceries Delivered",
+    description:
+      "Shop fresh groceries, fruits, vegetables, dairy, and daily essentials with fast delivery.",
+    type: "website",
+    locale: "en_US",
+    siteName: "GreenCart",
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

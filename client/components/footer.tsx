@@ -1,28 +1,37 @@
 import Link from "next/link";
 import Logo from "./logo";
 
-export default function Footer() {
-  const linkSections = [
-    {
-      title: "Quick Links",
-      links: ["Home", "Best Sellers", "Offers & Deals", "Contact Us", "FAQs"],
-    },
-    {
-      title: "Need Help?",
-      links: [
-        "Delivery Information",
-        "Return & Refund Policy",
-        "Payment Methods",
-        "Track your Order",
-        "Contact Us",
-      ],
-    },
-    {
-      title: "Follow Us",
-      links: ["Instagram", "Twitter", "Facebook", "YouTube"],
-    },
-  ];
+const linkSections = [
+  {
+    title: "Quick Links",
+    links: [
+      { label: "Home", href: "/" },
+      { label: "All Products", href: "/products" },
+      { label: "Best Sellers", href: "/#best-sellers" },
+      { label: "Categories", href: "/#categories" },
+    ],
+  },
+  {
+    title: "Need Help?",
+    links: [
+      { label: "Sign In", href: "/sign-in" },
+      { label: "Create Account", href: "/sign-up" },
+      { label: "My Orders", href: "/my-orders" },
+      { label: "Contact", href: "/#newsletter" },
+    ],
+  },
+  {
+    title: "Follow Us",
+    links: [
+      { label: "Instagram", href: "https://instagram.com" },
+      { label: "Twitter", href: "https://x.com" },
+      { label: "Facebook", href: "https://facebook.com" },
+      { label: "YouTube", href: "https://youtube.com" },
+    ],
+  },
+];
 
+export default function Footer() {
   return (
     <footer className="px-6 md:px-16 lg:px-24 xl:px-32 mt-24 bg-secondary text-secondary-foreground">
       <div className="flex flex-col md:flex-row items-start justify-between gap-10 py-10 border-b border-border text-muted-foreground">
@@ -35,30 +44,32 @@ export default function Footer() {
           </p>
         </div>
         <div className="flex flex-wrap justify-between w-full md:w-[45%] gap-5">
-          {linkSections.map((section, index) => (
-            <div key={index}>
-              <h3 className="font-semibold text-base text-foreground md:mb-5 mb-2">
+          {linkSections.map((section) => (
+            <nav key={section.title} aria-label={section.title}>
+              <h2 className="font-semibold text-base text-foreground md:mb-5 mb-2">
                 {section.title}
-              </h3>
+              </h2>
               <ul className="text-sm space-y-1">
-                {section.links.map((link, i) => (
-                  <li key={i}>
-                    <a
-                      href="#"
+                {section.links.map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
                       className="hover:text-foreground hover:underline transition-colors"
+                      {...(link.href.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
                     >
-                      {link}
-                    </a>
+                      {link.label}
+                    </Link>
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
         </div>
       </div>
       <p className="py-4 text-center text-sm md:text-base text-muted-foreground">
-        Copyright {new Date().getFullYear()} © <Link href="/">Khoa.dev</Link>{" "}
-        All Right Reserved.
+        Copyright 2026 © <Link href="/">GreenCart</Link>. All rights reserved.
       </p>
     </footer>
   );

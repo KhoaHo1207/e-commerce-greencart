@@ -1,15 +1,12 @@
 "use client";
 
 import { useAppContext } from "@/contexts/app-provider";
+import { toCategorySlug } from "@/lib/slug";
 import { Product } from "@/types/product";
 import { useMemo } from "react";
 
-export function toCategorySlug(value: string) {
-  return value.trim().toLowerCase().replace(/\s+/g, "-");
-}
-
 export const useFilterProducts = (
-  categorySlug?: string,
+  categorySlug?: string
 ): {
   filteredProducts: Product[];
   totalProducts: number;
@@ -22,7 +19,7 @@ export const useFilterProducts = (
     const selected = toCategorySlug(categorySlug);
 
     return products.filter(
-      (product) => toCategorySlug(product.category) === selected,
+      (product) => toCategorySlug(product.category) === selected
     );
   }, [products, categorySlug]);
 
@@ -30,4 +27,14 @@ export const useFilterProducts = (
     filteredProducts,
     totalProducts: filteredProducts.length,
   };
+};
+
+export const useProduct = (slug: string): Product | undefined => {
+  const { products } = useAppContext();
+
+  const product = useMemo(() => {
+    return products.find((product) => product.slug === slug);
+  }, [products, slug]);
+
+  return product;
 };

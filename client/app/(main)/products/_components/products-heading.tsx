@@ -1,7 +1,7 @@
 "use client";
 
 import { useAppContext } from "@/contexts/app-provider";
-import { toCategorySlug } from "@/hooks/use-product";
+import { toCategorySlug } from "@/lib/slug";
 import { useParams } from "next/navigation";
 
 export default function ProductsHeading() {
@@ -17,7 +17,7 @@ export default function ProductsHeading() {
 
   return (
     <div className="flex flex-col items-end w-max">
-      <p className="text-2xl font-medium uppercase">{title}</p>
+      <h1 className="text-2xl font-medium uppercase">{title}</h1>
       <div className="w-16 h-0.5 bg-primary rounded-full" />
     </div>
   );
