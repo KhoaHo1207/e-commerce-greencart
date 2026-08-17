@@ -1,6 +1,6 @@
 import { StaticImageData } from "next/image";
 
-type Category = {
+export type Category = {
   text: string;
   path: string;
   image: StaticImageData;

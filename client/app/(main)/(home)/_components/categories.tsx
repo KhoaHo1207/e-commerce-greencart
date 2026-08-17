@@ -1,6 +1,7 @@
 "use client";
 
 import { useAppContext } from "@/contexts/app-provider";
+import { toCategorySlug } from "@/hooks/use-product";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -12,14 +13,14 @@ export default function Categories() {
         Categories
       </p>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-7 mt-6 gap-6">
-        {categories.map((category, index) => {
-          const path = category.path.toLowerCase().replace(" ", "-");
+        {categories.map((category) => {
+          const slug = toCategorySlug(category.path);
           return (
             <Link
               className="group cursor-pointer py-5 px-3 gap-2 rounded-lg flex flex-col justify-center items-center ring-1 ring-black/5 dark:ring-white/10"
-              key={index}
+              key={category.path}
               style={{ backgroundColor: category.bgColor }}
-              href={`/products?category=${path}`}
+              href={`/products/${slug}`}
             >
               <Image
                 src={category.image}

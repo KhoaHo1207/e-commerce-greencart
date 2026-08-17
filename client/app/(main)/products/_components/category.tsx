@@ -4,12 +4,12 @@ import { useAppContext } from "@/contexts/app-provider";
 import { toCategorySlug } from "@/hooks/use-product";
 import type { Category } from "@/types/category";
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useParams } from "next/navigation";
 
-export default function Category() {
+export default function CategoryNav() {
   const { categories } = useAppContext();
-  const searchParams = useSearchParams();
-  const category = searchParams.get("category");
+  const params = useParams<{ category?: string }>();
+  const activeCategory = params.category;
 
   return (
     <>
@@ -18,18 +18,22 @@ export default function Category() {
           <Link
             href="/products"
             className={`text-sm border border-border rounded px-4 py-2 cursor-pointer hover:bg-muted transition-all duration-300 ${
-              !category ? "bg-muted" : ""
+              !activeCategory ? "bg-muted" : ""
             }`}
           >
             All
           </Link>
-          {categories.map((cat) => (
-            <CategoryItem
-              key={cat.text}
-              category={cat}
-              isActive={toCategorySlug(cat.path) === category}
-            />
-          ))}
+          {categories.map((cat) => {
+            const slug = toCategorySlug(cat.path);
+            return (
+              <CategoryItem
+                key={cat.text}
+                category={cat}
+                slug={slug}
+                isActive={slug === activeCategory}
+              />
+            );
+          })}
         </div>
       ) : null}
     </>
@@ -38,9 +42,11 @@ export default function Category() {
 
 function CategoryItem({
   category,
+  slug,
   isActive,
 }: {
   category: Category;
+  slug: string;
   isActive: boolean;
 }) {
   return (
@@ -48,7 +54,7 @@ function CategoryItem({
       className={`text-sm border border-border rounded px-4 py-2 cursor-pointer hover:bg-muted transition-all duration-300 ${
         isActive ? "bg-muted" : ""
       }`}
-      href={`/products?category=${toCategorySlug(category.path)}`}
+      href={`/products/${slug}`}
     >
       {category.text}
     </Link>
