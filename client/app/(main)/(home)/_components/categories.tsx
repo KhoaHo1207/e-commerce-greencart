@@ -1,8 +1,11 @@
-import { categories } from "@/constants/assets";
+"use client";
+
+import { useAppContext } from "@/contexts/app-provider";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Categories() {
+  const { categories } = useAppContext();
   return (
     <div className="mt-16">
       <p className="text-2xl md:text-3xl font-medium text-foreground">
@@ -23,7 +26,9 @@ export default function Categories() {
                 alt={category.text}
                 className="group-hover:scale-108 transition max-w-28"
               />
-              <p className="text-sm font-bold text-stone-800">{category.text}</p>
+              <p className="text-sm font-bold text-stone-800">
+                {category.text}
+              </p>
             </Link>
           );
         })}

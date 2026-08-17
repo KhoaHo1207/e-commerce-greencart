@@ -100,7 +100,7 @@ export const assets = {
   box_icon,
 };
 
-export const categories = [
+export const dummyCategories = [
   {
     text: "Organic veggies",
     path: "Vegetables",

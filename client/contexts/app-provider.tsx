@@ -1,12 +1,13 @@
 "use client";
 
-import { dummyProducts } from "@/constants/assets";
+import { dummyCategories, dummyProducts } from "@/constants/assets";
 import type { CartItem } from "@/features/cart/types";
 import {
   addCartItem,
   removeCartItem,
   updateCartItem,
 } from "@/features/cart/utils";
+import type { Category } from "@/types/category";
 import type { Product } from "@/types/product";
 import type { User } from "@/types/user";
 import { useRouter } from "next/navigation";
@@ -37,6 +38,8 @@ export type AppContextValue = {
   addToCart: (productId: string, quantity?: number) => void;
   updateCart: (productId: string, quantity: number) => void;
   removeFromCart: (productId: string) => void;
+  categories: Category[];
+  setCategories: Dispatch<SetStateAction<Category[]>>;
 };
 
 type AppContextProviderProps = {
@@ -56,6 +59,7 @@ export function AppContextProvider({ children }: AppContextProviderProps) {
   const [isSeller, setIsSeller] = useState(false);
   const [products, setProducts] = useState<Product[]>(dummyProducts);
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [categories, setCategories] = useState<Category[]>(dummyCategories);
 
   const addToCart = useCallback(
     (productId: string, quantity = 1) => {
@@ -87,6 +91,8 @@ export function AppContextProvider({ children }: AppContextProviderProps) {
       addToCart,
       updateCart,
       removeFromCart,
+      categories,
+      setCategories,
     }),
     [
       router,
@@ -98,6 +104,8 @@ export function AppContextProvider({ children }: AppContextProviderProps) {
       addToCart,
       updateCart,
       removeFromCart,
+      categories,
+      setCategories,
     ]
   );
 
