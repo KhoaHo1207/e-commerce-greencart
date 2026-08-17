@@ -205,6 +205,7 @@ export const dummyProducts = [
   {
     _id: "gd46g23h",
     name: "Potato 500g",
+    slug: "potato-500g",
     category: "Vegetables",
     price: 25,
     offerPrice: 20,
@@ -222,6 +223,7 @@ export const dummyProducts = [
   {
     _id: "gd47g34h",
     name: "Tomato 1 kg",
+    slug: "tomato-1kg",
     category: "Vegetables",
     price: 40,
     offerPrice: 35,
@@ -240,6 +242,7 @@ export const dummyProducts = [
   {
     _id: "gd48g45h",
     name: "Carrot 500g",
+    slug: "carrot-500g",
     category: "Vegetables",
     price: 30,
     offerPrice: 28,
@@ -257,6 +260,7 @@ export const dummyProducts = [
   {
     _id: "gd49g56h",
     name: "Spinach 500g",
+    slug: "spinach-500g",
     category: "Vegetables",
     price: 18,
     offerPrice: 15,
@@ -274,6 +278,7 @@ export const dummyProducts = [
   {
     _id: "gd50g67h",
     name: "Onion 500g",
+    slug: "onion-500g",
     category: "Vegetables",
     price: 22,
     offerPrice: 19,
@@ -293,6 +298,7 @@ export const dummyProducts = [
   {
     _id: "ek51j12k",
     name: "Apple 1 kg",
+    slug: "apple-1kg",
     category: "Fruits",
     price: 120,
     offerPrice: 110,
@@ -312,6 +318,7 @@ export const dummyProducts = [
   {
     _id: "ek52j23k",
     name: "Orange 1 kg",
+    slug: "orange-1kg",
     category: "Fruits",
     price: 80,
     offerPrice: 75,
@@ -329,6 +336,7 @@ export const dummyProducts = [
   {
     _id: "ek53j34k",
     name: "Banana 1 kg",
+    slug: "banana-1kg",
     category: "Fruits",
     price: 50,
     offerPrice: 45,
@@ -346,6 +354,7 @@ export const dummyProducts = [
   {
     _id: "ek54j45k",
     name: "Mango 1 kg",
+    slug: "mango-1kg",
     category: "Fruits",
     price: 150,
     offerPrice: 140,
@@ -363,6 +372,7 @@ export const dummyProducts = [
   {
     _id: "ek55j56k",
     name: "Grapes 500g",
+    slug: "grapes-500g",
     category: "Fruits",
     price: 70,
     offerPrice: 65,
@@ -382,6 +392,7 @@ export const dummyProducts = [
   {
     _id: "ek56j67k",
     name: "Amul Milk 1L",
+    slug: "amul-milk-1l",
     category: "Dairy",
     price: 60,
     offerPrice: 55,
@@ -400,6 +411,7 @@ export const dummyProducts = [
   {
     _id: "ek57j78k",
     name: "Paneer 200g",
+    slug: "paneer-200g",
     category: "Dairy",
     price: 90,
     offerPrice: 85,
@@ -417,6 +429,7 @@ export const dummyProducts = [
   {
     _id: "ek58j89k",
     name: "Eggs 12 pcs",
+    slug: "eggs-12-pcs",
     category: "Dairy",
     price: 90,
     offerPrice: 85,
@@ -434,6 +447,7 @@ export const dummyProducts = [
   {
     _id: "ek59j90k",
     name: "Paneer 200g",
+    slug: "paneer-200g",
     category: "Dairy",
     price: 90,
     offerPrice: 85,
@@ -451,6 +465,7 @@ export const dummyProducts = [
   {
     _id: "ek60j01k",
     name: "Cheese 200g",
+    slug: "cheese-200g",
     category: "Dairy",
     price: 140,
     offerPrice: 130,
@@ -470,6 +485,7 @@ export const dummyProducts = [
   {
     _id: "ek61j12k",
     name: "Coca-Cola 1.5L",
+    slug: "coca-cola-15l",
     category: "Drinks",
     price: 80,
     offerPrice: 75,
@@ -487,6 +503,7 @@ export const dummyProducts = [
   {
     _id: "ek62j23k",
     name: "Pepsi 1.5L",
+    slug: "pepsi-15l",
     category: "Drinks",
     price: 78,
     offerPrice: 73,
@@ -504,6 +521,7 @@ export const dummyProducts = [
   {
     _id: "ek63j34k",
     name: "Sprite 1.5L",
+    slug: "sprite-15l",
     category: "Drinks",
     price: 79,
     offerPrice: 74,
@@ -521,6 +539,7 @@ export const dummyProducts = [
   {
     _id: "ek64j45k",
     name: "Fanta 1.5L",
+    slug: "fanta-15l",
     category: "Drinks",
     price: 77,
     offerPrice: 72,
@@ -538,6 +557,7 @@ export const dummyProducts = [
   {
     _id: "ek65j56k",
     name: "7 Up 1.5L",
+    slug: "7-up-15l",
     category: "Drinks",
     price: 76,
     offerPrice: 71,
@@ -557,6 +577,7 @@ export const dummyProducts = [
   {
     _id: "ek66j67k",
     name: "Basmati Rice 5kg",
+    slug: "basmati-rice-5kg",
     category: "Grains",
     price: 550,
     offerPrice: 520,
@@ -574,6 +595,7 @@ export const dummyProducts = [
   {
     _id: "ek67j78k",
     name: "Wheat Flour 5kg",
+    slug: "wheat-flour-5kg",
     category: "Grains",
     price: 250,
     offerPrice: 230,
@@ -591,6 +613,7 @@ export const dummyProducts = [
   {
     _id: "ek68j89k",
     name: "Organic Quinoa 500g",
+    slug: "organic-quinoa-500g",
     category: "Grains",
     price: 450,
     offerPrice: 420,
@@ -608,6 +631,7 @@ export const dummyProducts = [
   {
     _id: "ek69j90k",
     name: "Brown Rice 1kg",
+    slug: "brown-rice-1kg",
     category: "Grains",
     price: 120,
     offerPrice: 110,
@@ -625,6 +649,7 @@ export const dummyProducts = [
   {
     _id: "ek70j01k",
     name: "Barley 1kg",
+    slug: "barley-1kg",
     category: "Grains",
     price: 150,
     offerPrice: 140,
@@ -644,6 +669,7 @@ export const dummyProducts = [
   {
     _id: "bk01a24z",
     name: "Brown Bread 400g",
+    slug: "brown-bread-400g",
     category: "Bakery",
     price: 40,
     offerPrice: 35,
@@ -661,6 +687,7 @@ export const dummyProducts = [
   {
     _id: "bk02b30y",
     name: "Butter Croissant 100g",
+    slug: "butter-croissant-100g",
     category: "Bakery",
     price: 50,
     offerPrice: 45,
@@ -678,6 +705,7 @@ export const dummyProducts = [
   {
     _id: "bk03c31x",
     name: "Chocolate Cake 500g",
+    slug: "chocolate-cake-500g",
     category: "Bakery",
     price: 350,
     offerPrice: 325,
@@ -695,6 +723,7 @@ export const dummyProducts = [
   {
     _id: "bk04d32w",
     name: "Whole Bread 400g",
+    slug: "whole-bread-400g",
     category: "Bakery",
     price: 45,
     offerPrice: 40,
@@ -712,6 +741,7 @@ export const dummyProducts = [
   {
     _id: "bk05e33v",
     name: "Vanilla Muffins 6 pcs",
+    slug: "vanilla-muffins-6-pcs",
     category: "Bakery",
     price: 100,
     offerPrice: 90,
@@ -731,6 +761,7 @@ export const dummyProducts = [
   {
     _id: "in01f25u",
     name: "Maggi Noodles 280g",
+    slug: "maggi-noodles-280g",
     category: "Instant",
     price: 55,
     offerPrice: 50,
@@ -748,6 +779,7 @@ export const dummyProducts = [
   {
     _id: "in02g26t",
     name: "Top Ramen 270g",
+    slug: "top-ramen-270g",
     category: "Instant",
     price: 45,
     offerPrice: 40,
@@ -765,6 +797,7 @@ export const dummyProducts = [
   {
     _id: "in03h27s",
     name: "Knorr Cup Soup 70g",
+    slug: "knorr-cup-soup-70g",
     category: "Instant",
     price: 35,
     offerPrice: 30,
@@ -782,6 +815,7 @@ export const dummyProducts = [
   {
     _id: "in04i28r",
     name: "Yippee Noodles 260g",
+    slug: "yippee-noodles-260g",
     category: "Instant",
     price: 50,
     offerPrice: 45,
@@ -799,6 +833,7 @@ export const dummyProducts = [
   {
     _id: "in05j29q",
     name: "Oats Noodles 72g",
+    slug: "oats-noodles-72g",
     category: "Instant",
     price: 40,
     offerPrice: 35,

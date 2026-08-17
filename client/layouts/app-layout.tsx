@@ -23,7 +23,10 @@ export default function AppLayout({ children }: Props) {
   return (
     <>
       {isSellerPath ? null : <Navbar />}
-      <main className={isSellerPath ? "" : "md:px-16 lg:px-24 xl:px-32"}>
+      <main
+        id="main-content"
+        className={isSellerPath ? "" : "px-6 md:px-16 lg:px-24 xl:px-32"}
+      >
         {children}
       </main>
       {isSellerPath ? null : <Footer />}
