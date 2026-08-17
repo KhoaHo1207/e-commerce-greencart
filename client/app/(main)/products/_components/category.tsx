@@ -1,6 +1,7 @@
 "use client";
 
 import { useAppContext } from "@/contexts/app-provider";
+import { toCategorySlug } from "@/hooks/use-product";
 import type { Category } from "@/types/category";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -14,11 +15,19 @@ export default function Category() {
     <>
       {categories && categories.length > 0 ? (
         <div className="flex flex-wrap gap-2 items-center mt-8">
+          <Link
+            href="/products"
+            className={`text-sm border border-border rounded px-4 py-2 cursor-pointer hover:bg-muted transition-all duration-300 ${
+              !category ? "bg-muted" : ""
+            }`}
+          >
+            All
+          </Link>
           {categories.map((cat) => (
             <CategoryItem
               key={cat.text}
               category={cat}
-              isActive={cat.path.toLowerCase().replace(" ", "-") === category}
+              isActive={toCategorySlug(cat.path) === category}
             />
           ))}
         </div>
@@ -39,9 +48,7 @@ function CategoryItem({
       className={`text-sm border border-border rounded px-4 py-2 cursor-pointer hover:bg-muted transition-all duration-300 ${
         isActive ? "bg-muted" : ""
       }`}
-      href={`/products?category=${category.path
-        .toLowerCase()
-        .replace(" ", "-")}`}
+      href={`/products?category=${toCategorySlug(category.path)}`}
     >
       {category.text}
     </Link>
