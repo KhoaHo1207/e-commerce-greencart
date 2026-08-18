@@ -1,11 +1,7 @@
-import Logo from "@/components/logo";
-import React from "react";
+import Logo from "@/components/layout/logo";
+import type { ReactNode } from "react";
 
-interface Props {
-  children: React.ReactNode;
-}
-
-export default function AuthLayout({ children }: Props) {
+export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-dvh bg-background flex flex-col">
       <header className="px-6 md:px-16 lg:px-24 xl:px-32 py-4">

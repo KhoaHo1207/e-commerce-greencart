@@ -1,6 +1,4 @@
-import { ThemeProvider } from "@/components/theme-provider";
-import { Toaster } from "@/components/ui/sonner";
-import { AppContextProvider } from "@/contexts/app-provider";
+import { Providers } from "./providers";
 import type { Metadata } from "next";
 import { Outfit } from "next/font/google";
 import "./globals.css";
@@ -37,17 +35,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <body className="min-h-full flex flex-col">
-        <AppContextProvider>
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-            <Toaster position="top-right" richColors />
-          </ThemeProvider>
-        </AppContextProvider>
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
