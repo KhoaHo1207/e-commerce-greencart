@@ -5,18 +5,22 @@ import { ShoppingCart } from "lucide-react";
 import Link from "next/link";
 
 export default function CartIcon() {
-  const itemCount = useCartCount();
+  const typeCount = useCartCount();
   const label =
-    itemCount === 0
+    typeCount === 0
       ? "Shopping cart"
-      : `Shopping cart, ${itemCount} ${itemCount === 1 ? "item" : "items"}`;
+      : `Shopping cart, ${typeCount} ${typeCount === 1 ? "product" : "products"}`;
 
   return (
-    <Link href="/cart" aria-label={label} className="relative">
+    <Link
+      href="/cart"
+      aria-label={label}
+      className="relative inline-flex size-8 items-center justify-center"
+    >
       <ShoppingCart className="size-[18px] text-foreground" aria-hidden />
-      {itemCount > 0 ? (
-        <span className="absolute -top-2 -right-3 text-xs text-primary-foreground bg-primary w-[18px] h-[18px] rounded-full flex items-center justify-center">
-          {itemCount > 99 ? "99+" : itemCount}
+      {typeCount > 0 ? (
+        <span className="absolute top-0 right-0 min-w-4 h-4 px-0.5 text-[10px] leading-none text-primary-foreground bg-primary rounded-full flex items-center justify-center">
+          {typeCount > 99 ? "99+" : typeCount}
         </span>
       ) : null}
     </Link>

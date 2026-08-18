@@ -1,5 +1,6 @@
 import { dummyCategories } from "@/constants/assets";
 import ProductsView from "@/features/products/components/products-view";
+import { parseSearchQuery } from "@/features/products/utils/filter-products";
 import { toCategorySlug } from "@/lib/slug";
 import type { Metadata } from "next";
 
@@ -20,7 +21,9 @@ export async function generateMetadata({
 
 export default async function ProductCategoryPage({
   params,
+  searchParams,
 }: PageProps<"/products/[category]">) {
   const { category } = await params;
-  return <ProductsView category={category} />;
+  const { q } = await searchParams;
+  return <ProductsView category={category} query={parseSearchQuery(q)} />;
 }

@@ -6,9 +6,18 @@ import { useFilterProducts } from "@/features/products/hooks/use-product";
 import { toCategorySlug } from "@/lib/slug";
 import { notFound } from "next/navigation";
 
-export default function ProductList({ category }: { category?: string }) {
+export default function ProductList({
+  category,
+  query,
+}: {
+  category?: string;
+  query?: string;
+}) {
   const { categories } = useAppContext();
-  const { filteredProducts, totalProducts } = useFilterProducts(category);
+  const { filteredProducts, totalProducts } = useFilterProducts(
+    category,
+    query,
+  );
 
   if (
     category &&
@@ -22,6 +31,12 @@ export default function ProductList({ category }: { category?: string }) {
       <p className="mt-6">
         Results: <span className="font-bold text-primary">{totalProducts}</span>{" "}
         found
+        {query ? (
+          <>
+            {" "}
+            for <span className="font-medium text-foreground">“{query}”</span>
+          </>
+        ) : null}
       </p>
 
       {filteredProducts.length > 0 ? (
@@ -34,7 +49,9 @@ export default function ProductList({ category }: { category?: string }) {
         </ul>
       ) : (
         <p className="mt-16 italic text-center text-lg text-muted-foreground">
-          No products found
+          {query
+            ? `No products found for “${query}”`
+            : "No products found"}
         </p>
       )}
     </>

@@ -1,13 +1,19 @@
 "use client";
 
 import { useAppContext } from "@/components/providers/app-provider";
-import { useCallback, useEffect, useMemo } from "react";
-import { patchCartState, setCartState, useCartStore } from "../stores/cart.store";
+import { useCallback, useEffect, useMemo, useSyncExternalStore } from "react";
+import {
+  getCartLineCountServerSnapshot,
+  getCartLineCountSnapshot,
+  patchCartState,
+  setCartState,
+  subscribeCart,
+  useCartStore,
+} from "../stores/cart.store";
 import type { CartLine } from "../types/cart.types";
 import {
   addCartItem,
   clearCartItems,
-  getCartItemCount,
   getCartItemQuantity,
   getCartTotals,
   pruneCart,
@@ -72,6 +78,9 @@ export function useCart() {
 }
 
 export function useCartCount() {
-  const items = useCartStore();
-  return useMemo(() => getCartItemCount(items), [items]);
+  return useSyncExternalStore(
+    subscribeCart,
+    getCartLineCountSnapshot,
+    getCartLineCountServerSnapshot,
+  );
 }

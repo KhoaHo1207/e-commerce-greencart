@@ -4,7 +4,7 @@ import { useAppContext } from "@/components/providers/app-provider";
 import { toCategorySlug } from "@/lib/slug";
 import { useParams } from "next/navigation";
 
-export default function ProductsHeading() {
+export default function ProductsHeading({ query }: { query?: string }) {
   const { categories } = useAppContext();
   const params = useParams<{ category?: string }>();
   const categorySlug = params.category;
@@ -13,7 +13,9 @@ export default function ProductsHeading() {
     (category) => toCategorySlug(category.path) === categorySlug,
   );
 
-  const title = currentCategory?.text ?? "All Products";
+  const title = query
+    ? "Search results"
+    : (currentCategory?.text ?? "All Products");
 
   return (
     <div className="flex flex-col items-end w-max">

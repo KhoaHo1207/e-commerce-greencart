@@ -1,27 +1,27 @@
 "use client";
 
 import { useAppContext } from "@/components/providers/app-provider";
-import type { Product } from "@/features/products/types/product.types";
-import { toCategorySlug } from "@/lib/slug";
 import { useMemo } from "react";
+import type { Product } from "../types/product.types";
+import { filterProducts } from "../utils/filter-products";
+import {
+  getRelatedProducts,
+  RELATED_PRODUCTS_LIMIT,
+} from "../utils/related-products";
 
 export const useFilterProducts = (
   categorySlug?: string,
+  query?: string,
 ): {
   filteredProducts: Product[];
   totalProducts: number;
 } => {
   const { products } = useAppContext();
 
-  const filteredProducts = useMemo(() => {
-    if (!categorySlug) return products;
-
-    const selected = toCategorySlug(categorySlug);
-
-    return products.filter(
-      (product) => toCategorySlug(product.category) === selected,
-    );
-  }, [products, categorySlug]);
+  const filteredProducts = useMemo(
+    () => filterProducts(products, { categorySlug, query }),
+    [products, categorySlug, query],
+  );
 
   return {
     filteredProducts,
@@ -37,4 +37,17 @@ export const useProduct = (slug: string): Product | undefined => {
   }, [products, slug]);
 
   return product;
+};
+
+export const useRelatedProducts = (
+  productId: string,
+  category: string,
+  limit = RELATED_PRODUCTS_LIMIT,
+): Product[] => {
+  const { products } = useAppContext();
+
+  return useMemo(
+    () => getRelatedProducts(products, productId, category, limit),
+    [products, productId, category, limit],
+  );
 };

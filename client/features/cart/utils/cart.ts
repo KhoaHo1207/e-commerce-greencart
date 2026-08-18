@@ -80,8 +80,17 @@ export function pruneCart(cartItems: Cart, products: Product[]): Cart {
   return cartItems.filter((item) => productIds.has(item.productId));
 }
 
-export function getCartItemCount(cartItems: Cart): number {
+export function getCartLineCount(cartItems: Cart): number {
+  return cartItems.length;
+}
+
+export function getCartUnitCount(cartItems: Cart): number {
   return cartItems.reduce((sum, item) => sum + item.quantity, 0);
+}
+
+/** Badge count: unique product types (lines), not total units. */
+export function getCartItemCount(cartItems: Cart): number {
+  return getCartLineCount(cartItems);
 }
 
 export function getCartItemQuantity(
@@ -112,7 +121,7 @@ export function resolveCartLines(
 }
 
 export function getCartTotals(lines: CartLine[]): CartTotals {
-  const itemCount = lines.reduce((sum, line) => sum + line.quantity, 0);
+  const unitCount = lines.reduce((sum, line) => sum + line.quantity, 0);
   const subtotal = roundMoney(
     lines.reduce((sum, line) => sum + line.lineTotal, 0),
   );
@@ -120,7 +129,7 @@ export function getCartTotals(lines: CartLine[]): CartTotals {
   const total = roundMoney(subtotal + tax);
 
   return {
-    itemCount,
+    itemCount: unitCount,
     uniqueCount: lines.length,
     subtotal,
     tax,

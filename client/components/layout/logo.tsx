@@ -9,7 +9,7 @@ export default function Logo() {
         alt="GreenCart"
         width={100}
         height={100}
-        className="object-contain w-34 md:w-38"
+        className="object-contain h-auto w-28 sm:w-34 md:w-38"
         loading="eager"
       />
     </Link>

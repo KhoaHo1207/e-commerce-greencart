@@ -1,11 +1,8 @@
 "use client";
 
 import { useEffect, useSyncExternalStore } from "react";
-import {
-  CART_STORAGE_KEY,
-  parseCart,
-  type Cart,
-} from "../schemas/cart.schema";
+import { CART_STORAGE_KEY, parseCart, type Cart } from "../schemas/cart.schema";
+import { getCartLineCount } from "../utils/cart";
 
 const EMPTY_CART: Cart = [];
 const listeners = new Set<() => void>();
@@ -28,6 +25,14 @@ export function getCartSnapshot(): Cart {
 
 export function getCartServerSnapshot(): Cart {
   return EMPTY_CART;
+}
+
+export function getCartLineCountSnapshot(): number {
+  return getCartLineCount(items);
+}
+
+export function getCartLineCountServerSnapshot(): number {
+  return 0;
 }
 
 export function subscribeCart(listener: () => void) {

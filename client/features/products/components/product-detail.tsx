@@ -4,6 +4,11 @@ import { useAppContext } from "@/components/providers/app-provider";
 import { assets } from "@/constants/assets";
 import { useCart } from "@/features/cart/hooks";
 import { useProduct } from "@/features/products/hooks/use-product";
+import ReviewSection from "@/features/reviews/components/review-section";
+import ShopCard from "@/features/shop/components/shop-card";
+import WishlistButton from "@/features/wishlist/components/wishlist-button";
+import ProductAbout from "./product-about";
+import RelatedProducts from "./related-products";
 import { toCategorySlug } from "@/lib/slug";
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
@@ -38,7 +43,8 @@ export default function ProductDetail({
   const categoryHref = `/products/${toCategorySlug(product.category)}`;
 
   return (
-    <article className="w-full mt-10">
+    <div className="w-full mt-10">
+      <article>
       <nav aria-label="Breadcrumb">
         <ol className="flex flex-wrap items-center gap-1 text-sm text-muted-foreground">
           <li>
@@ -112,9 +118,15 @@ export default function ProductDetail({
         </div>
 
         <div className="text-sm w-full md:w-1/2">
-          <h1 className="text-3xl font-medium text-foreground">
-            {product.name}
-          </h1>
+          <div className="flex items-start justify-between gap-3">
+            <h1 className="text-3xl font-medium text-foreground">
+              {product.name}
+            </h1>
+            <WishlistButton
+              productId={product._id}
+              productName={product.name}
+            />
+          </div>
 
           <div className="flex items-center gap-0.5 mt-1">
             {Array.from({ length: 5 }, (_, i) => (
@@ -149,15 +161,6 @@ export default function ProductDetail({
             </span>
           </div>
 
-          <h2 className="text-base font-medium mt-6 text-foreground">
-            About Product
-          </h2>
-          <ul className="list-disc ml-4 text-muted-foreground">
-            {product.description.map((desc) => (
-              <li key={desc}>{desc}</li>
-            ))}
-          </ul>
-
           <div className="flex flex-col sm:flex-row items-center mt-10 gap-4 text-base">
             <button
               type="button"
@@ -184,6 +187,11 @@ export default function ProductDetail({
           </div>
         </div>
       </div>
-    </article>
+      </article>
+      <ShopCard />
+      <ProductAbout description={product.description} />
+      <ReviewSection />
+      <RelatedProducts productId={product._id} category={product.category} />
+    </div>
   );
 }
