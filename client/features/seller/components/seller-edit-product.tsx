@@ -27,8 +27,10 @@ export default function SellerEditProduct() {
     );
   }
 
+  const productId = product._id;
+
   function handleSubmit(values: SellerProductSchema, images: ProductImage[]) {
-    const next = updateProduct(product._id, values, images);
+    const next = updateProduct(productId, values, images);
     if (!next) return;
     toast.success(`${next.name} updated`);
     router.push("/seller/products");
