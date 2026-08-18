@@ -44,9 +44,20 @@ export function AppContextProvider({ children }: AppContextProviderProps) {
     email: "john.doe@example.com",
     role: "user",
   });
-  const [isSeller, setIsSeller] = useState(false);
   const [products, setProducts] = useState<Product[]>(dummyProducts);
   const [categories, setCategories] = useState<Category[]>(dummyCategories);
+
+  const isSeller = user?.role === "seller";
+
+  const setIsSeller: Dispatch<SetStateAction<boolean>> = (value) => {
+    setUser((prev) => {
+      if (!prev) return prev;
+      const next =
+        typeof value === "function" ? value(prev.role === "seller") : value;
+      if (next === (prev.role === "seller")) return prev;
+      return { ...prev, role: next ? "seller" : "user" };
+    });
+  };
 
   const value = useMemo<AppContextValue>(
     () => ({

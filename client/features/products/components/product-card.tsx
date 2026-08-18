@@ -4,6 +4,7 @@ import { useAppContext } from "@/components/providers/app-provider";
 import { useCartItem } from "@/features/cart/hooks";
 import type { Product } from "@/features/products/types/product.types";
 import { assets } from "@/constants/assets";
+import ProductPhoto from "./product-photo";
 import { toCategorySlug } from "@/lib/slug";
 import { ShoppingCart } from "lucide-react";
 import Image from "next/image";
@@ -18,7 +19,7 @@ export default function ProductCard({ product }: { product: Product }) {
     <article className="border border-border rounded-md bg-card text-card-foreground w-full h-full flex flex-col">
       <Link href={href} className="px-3 pt-3 md:px-4 md:pt-4 flex-1">
         <div className="group flex items-center justify-center px-2">
-          <Image
+          <ProductPhoto
             className="group-hover:scale-105 transition max-w-26 md:max-w-36"
             src={product.image[0]}
             alt={product.name}

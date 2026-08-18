@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useAppContext } from "@/components/providers/app-provider";
 import { useCart } from "@/features/cart/hooks";
 import { formatCartMoney } from "@/features/cart/utils/cart";
+import ProductPhoto from "@/features/products/components/product-photo";
 import { toCategorySlug } from "@/lib/slug";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
@@ -33,7 +33,7 @@ export default function OrderItemRow({ item }: { item: OrderItem }) {
     <article className="flex flex-col gap-3 py-4 border-b border-border last:border-b-0 sm:flex-row sm:items-center sm:justify-between">
       <div className="flex items-center gap-4 min-w-0">
         <Link href={href} className="shrink-0">
-          <Image
+          <ProductPhoto
             src={product.image[0]}
             alt={product.name}
             width={72}

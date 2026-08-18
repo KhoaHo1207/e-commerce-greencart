@@ -190,6 +190,8 @@ Thanh mobile **không nhồi 4 icon**. Hiện tại: search + cart + menu. `Mode
 
 `CartIcon` luôn `size-8` (vùng bấm + badge nằm trong ô, không `-right-3` đè nút bên cạnh).
 
+Seller dashboard: nav trên + shadcn `Sidebar`. Mobile sidebar = Sheet (trigger trên seller nav). Không nhồi sidebar vào buyer navbar.
+
 Đúng (banner ảnh khác nhau vì crop):
 
 ```tsx

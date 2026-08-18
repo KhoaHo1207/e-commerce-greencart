@@ -24,7 +24,7 @@ Dummy + icon map                            → constants/assets.ts
 Ảnh tĩnh                                    → public/images/
 ```
 
-Chưa có code → **đừng tạo** `features/checkout`, `seller`, `api/`.
+Chưa có code → **đừng tạo** `features/checkout`, `api/`.
 
 ---
 
@@ -35,25 +35,31 @@ app/
 ├── layout.tsx                      # Server: font, <Providers>
 ├── providers.tsx                   # Client: AppContext + Theme + Toaster
 ├── not-found.tsx
-└── (main)/                         # group, không lên URL
-    ├── layout.tsx                  # AppLayout (ẩn navbar trên auth + /seller)
-    ├── (home)/page.tsx             # /
-    ├── (auth)/
-    │   ├── layout.tsx              # chỉ Logo
-    │   ├── sign-in/page.tsx        # /sign-in
-    │   └── sign-up/page.tsx        # /sign-up
-    ├── products/
-    │   ├── page.tsx                # /products
-    │   └── [category]/
-    │       ├── page.tsx            # /products/fruits
-    │       └── [slug]/page.tsx     # /products/fruits/apple
-    ├── cart/page.tsx               # /cart
-    ├── my-orders/page.tsx          # /my-orders
-    ├── shop/page.tsx               # /shop
-    ├── account/page.tsx            # /account
-    ├── wishlist/page.tsx           # /wishlist
-    ├── addresses/page.tsx          # /addresses
-    └── vouchers/page.tsx           # /vouchers
+├── (main)/                         # group, không lên URL
+│   ├── layout.tsx                  # AppLayout (ẩn navbar trên auth)
+│   ├── (home)/page.tsx             # /
+│   ├── (auth)/
+│   │   ├── layout.tsx              # chỉ Logo
+│   │   ├── sign-in/page.tsx        # /sign-in
+│   │   └── sign-up/page.tsx        # /sign-up
+│   ├── products/
+│   │   ├── page.tsx                # /products
+│   │   └── [category]/
+│   │       ├── page.tsx            # /products/fruits
+│   │       └── [slug]/page.tsx     # /products/fruits/apple
+│   ├── cart/page.tsx               # /cart
+│   ├── my-orders/page.tsx          # /my-orders
+│   ├── shop/page.tsx               # /shop
+│   ├── account/page.tsx            # /account
+│   ├── wishlist/page.tsx           # /wishlist
+│   ├── addresses/page.tsx          # /addresses
+│   └── vouchers/page.tsx           # /vouchers
+└── seller/                         # ngoài (main) — không dùng AppLayout buyer
+    ├── layout.tsx                  # SellerLayout (nav + shadcn Sidebar)
+    ├── page.tsx                    # redirect → /seller/products
+    ├── products/page.tsx           # Product list
+    ├── products/add/page.tsx       # Add product
+    └── orders/page.tsx             # Orders
 
 components/
 ├── layout/                         # navbar (Sheet mobile), footer, logo, app-layout
@@ -99,15 +105,21 @@ features/
 │   ├── hooks/use-shop.ts           # 1 dummyShop dùng chung mọi SP
 │   └── components/                 # shop-card (PDP), shop-view (/shop)
 ├── account/
-│   ├── constants/account-menu.ts   # profile, orders, wishlist, addresses, vouchers
-│   └── components/                 # user-menu, profile, addresses, placeholder
-└── wishlist/
-    ├── schemas/wishlist.schema.ts  # Zod string[] productId, localStorage
-    ├── stores/wishlist.store.ts    # greencart.wishlist
-    ├── utils/wishlist.ts           # add / remove / toggle / prune
-    ├── hooks/use-wishlist.ts       # useWishlist, useWishlistItem
-    ├── types/wishlist.types.ts
-    └── components/                 # WishlistButton (icon), view, item, empty
+│   ├── constants/account-menu.ts   # profile… + getSellerMenuItem
+│   └── components/                 # user-menu, seller-menu-item, profile, addresses, placeholder
+├── wishlist/
+│   ├── schemas/wishlist.schema.ts  # Zod string[] productId, localStorage
+│   ├── stores/wishlist.store.ts    # greencart.wishlist
+│   ├── utils/wishlist.ts           # add / remove / toggle / prune
+│   ├── hooks/use-wishlist.ts       # useWishlist, useWishlistItem
+│   ├── types/wishlist.types.ts
+│   └── components/                 # WishlistButton (icon), view, item, empty
+└── seller/
+    ├── constants/seller-nav.ts     # Product list, Add product, Orders
+    ├── schemas/seller-product.schema.ts
+    ├── utils/seller-products.ts    # slug, filter, build product
+    ├── hooks/use-seller-products.ts
+    └── components/                 # layout, nav, sidebar, list, form, orders
 
 hooks/use-mobile.ts
 lib/utils.ts · lib/slug.ts          # cn, toCategorySlug
@@ -132,9 +144,14 @@ constants/assets.ts                 # dummyProducts, dummyCategories, dummyRevie
 | `/addresses` | `addresses/page.tsx` | `addresses-view.tsx` |
 | `/vouchers` | `vouchers/page.tsx` | `account-placeholder.tsx` |
 | `/sign-in` `/sign-up` | `(auth)/…` | `sign-*-view.tsx` |
+| `/seller` | `seller/page.tsx` | redirect `/seller/products` |
+| `/seller/products` | `seller/products/page.tsx` | `seller-product-list.tsx` |
+| `/seller/products/add` | `seller/products/add/page.tsx` | `seller-add-product.tsx` |
+| `/seller/products/:id/edit` | `seller/products/[id]/edit/page.tsx` | `seller-edit-product.tsx` |
+| `/seller/orders` | `seller/orders/page.tsx` | `seller-orders.tsx` |
 | unmatched | `not-found.tsx` | — |
 
-Chưa có page: `/seller`, `/checkout` (navbar/footer có thể vẫn link).
+Chưa có page: `/checkout` (navbar/footer có thể vẫn link).
 
 ---
 
@@ -148,10 +165,11 @@ Chưa có page: `/seller`, `/checkout` (navbar/footer có thể vẫn link).
 | **products** | card, list, detail, about, related, search | Card: `useCartItem`. PDP: gallery + tên + **icon tim** (`WishlistButton`) → giá → Add to Cart / Buy now → `ShopCard` → `ProductAbout` → `ReviewSection` → `RelatedProducts`. Search: `ProductSearch` GET `/products?q=`. |
 | **cart** | Zod store `{productId, quantity}` | Persist `localStorage`. Join Product lúc render. Tax 2%. **Badge** (`useCartCount` / `getCartLineCount`) = số **loại** (khoai 9 + cà rốt 2 → `2`). **Subtotal** trên trang cart = tổng **unit** (`itemCount`: 11 items). |
 | **reviews** | filter All/5–1★, 5 item/trang | Mọi SP dùng chung `dummyReviews`. Filter = `useState` (SEO: URL SP sạch). |
-| **orders** | list dummy, reorder | `dummyOrders`. Mỗi dòng: Add to Cart / Buy now → `useCart().addToCart(id, qty)` (Buy now rồi `/cart`). Chưa login → empty + Sign in. |
+| **orders** | dummy + patch store | Buyer: list, Add to Cart / Buy now. Seller: đổi status / mark paid. Patch `{orderId, status, isPaid}` persist `greencart.orders`. Join `dummyOrders` lúc render. |
 | **shop** | 1 shop dummy, PDP card | `dummyShop` dùng chung mọi SP. Avatar, online, ratings, products, response rate/time, joined, followers. Chat now → toast. View shop → `/shop`. |
-| **account** | avatar dropdown | Nav chỉ Home / All Products. Hover avatar: profile, orders, wishlist, addresses, vouchers, logout (không trùng nav). |
+| **account** | avatar dropdown | Nav chỉ Home / All Products. Hover avatar: profile, orders, wishlist, addresses, vouchers, **Manage store** (role seller) / **Become a seller** (user), logout. Become → `setIsSeller(true)` rồi `/seller/products`. |
 | **wishlist** | localStorage `productId[]` | Cùng `WishlistButton` (icon tim, không nút chữ). PDP: cạnh tên SP. `/wishlist`: góc phải trên card (`WishlistItem`, **không** `ProductCard`). Guest OK. Max 100. Toast add/remove. List: bỏ tim / Add giỏ. |
+| **seller** | dashboard + CRUD fake | List: search/filter, stock switch, edit, xóa. Add/edit: Zod form, ảnh demo (data URL). Catalog = `AppContext.products` (hiện luôn trên storefront). Orders: filter + đổi status. **Không** import `ProductList` / `orders-view`. |
 
 Cart hooks: `useCart()` lines/totals/actions · `useCartItem(id)` qty ± · `useCartCount()` badge = số loại (`getCartLineCount`).
 
@@ -159,13 +177,15 @@ Products hooks: `useProduct(slug)` · `useFilterProducts(categorySlug?, query?)`
 
 Reviews hooks: `useReviews()` rating + page local; đổi filter → page 1.
 
-Orders hooks: `useOrders()` dummy list nếu đã login; sort mới nhất.
+Orders hooks: `useOrders()` dummy + patches nếu đã login; sort mới nhất; `updateStatus` / `markPaid`.
 
 Shop hooks: `useShop()` 1 shop; `productCount` = `products.length`.
 
 Wishlist hooks: `useWishlist()` ids/items/add/remove/toggle · `useWishlistItem(id)` isSaved + toggle.
 
-Navbar: desktop (`sm+`) Home / All Products + search + cart + login/`UserMenu` + `ModeToggle`. Mobile: logo `w-28`, thanh = search + `CartIcon` (`size-8`) + hamburger. Hamburger = shadcn `Sheet` (bấm overlay / X / link → đóng). `ModeToggle` mobile nằm **trong Sheet**, không trên thanh.
+Seller hooks: `useSellerProducts()` add/update/remove/toggleStock trên `AppContext.products`.
+
+Navbar: desktop (`sm+`) Home / All Products + search + cart + login/`UserMenu` + `ModeToggle`. Mobile: logo `w-28`, thanh = search + `CartIcon` (`size-8`) + hamburger. Hamburger = shadcn `Sheet` (bấm overlay / X / link → đóng). `ModeToggle` mobile nằm **trong Sheet**, không trên thanh. Sheet/dropdown có `SellerMenuItem` (Manage store / Become a seller).
 
 ---
 
@@ -173,14 +193,15 @@ Navbar: desktop (`sm+`) Home / All Products + search + cart + login/`UserMenu` +
 
 | Cái gì | Chỗ |
 |---|---|
-| user, products[], categories[], currency, isSeller | `components/providers/app-provider.tsx` |
+| user, products[], categories[], currency, isSeller | `components/providers/app-provider.tsx` | `isSeller` = `user.role === "seller"` (không state riêng). |
 | cart | `features/cart/stores/cart.store.ts` |
 | wishlist | `features/wishlist/stores/wishlist.store.ts` |
+| order status/paid | `features/orders/stores/orders.store.ts` | Patch localStorage `greencart.orders` |
 | review filter + page | `features/reviews/hooks/use-reviews.ts` (`useState`) |
 | navbar menu | shadcn `Sheet` + `useState` search | Overlay / X / link → đóng. Mobile: search + cart + menu; theme trong Sheet. |
 | category catalog | URL `[category]` |
 | product search | URL `?q=` trên `/products` | Form `ProductSearch` trong navbar. `defaultValue` từ `useSearchParams`. X clear = native `type="search"`. |
-| my orders | `dummyOrders` qua `useOrders` | Chưa persist / API |
+| my orders | `dummyOrders` + patches qua `useOrders` | Status persist; không serialize `Product` |
 | shop | `dummyShop` qua `useShop` | 1 shop cho mọi SP |
 | API (sau này) | `features/<x>/api` + TanStack Query |
 
@@ -197,7 +218,9 @@ products → categories, cart, reviews, shop, wishlist
 orders → cart (addToCart / buy now), products (type Product trên dummy item)
 wishlist → products (type Product lúc render), cart (Add trên list); **không** import ProductCard
 shop → products (chỉ `products.length` cho productCount; **không** import ProductList — tránh cycle)
-navbar → cart (CartIcon), products (ProductSearch), account (UserMenu + ACCOUNT_MENU_ITEMS trong Sheet), user từ AppContext, shadcn Sheet / Button / ModeToggle
+navbar → cart (CartIcon), products (ProductSearch), account (UserMenu + SellerMenuItem + ACCOUNT_MENU_ITEMS trong Sheet), user từ AppContext, shadcn Sheet / Button / ModeToggle
+seller → account (UserMenu), orders (useOrders), products (type + ProductPhoto), categories; **không** import ProductList / orders-view
+account → **không** import `features/seller` (chỉ href `/seller/products`)
 components/ui  ↛  features
 features  ↛  app/*
 lib  ↛  features
@@ -213,11 +236,11 @@ Cùng feature: `./`. Ra ngoài: `@/`.
 - Type domain ở `types/` root — để `features/<x>/types/`
 - Copy `Product` vào cart / wishlist state
 - Query `?rating` / `?page` cho reviews trên PDP
-- Tạo `checkout/` `seller/` `api/` trước khi có file
+- Tạo `checkout/` `api/` trước khi có file
 - Import `../../../../`
 
 ---
 
 ## Việc tiếp theo
 
-`auth` API · review theo `productId` · `checkout` · `seller`.
+`auth` API · review theo `productId` · `checkout`.

@@ -1,5 +1,7 @@
 import { StaticImageData } from "next/image";
 
+export type ProductImage = StaticImageData | string;
+
 export type Product = {
   _id: string;
   name: string;
@@ -7,7 +9,7 @@ export type Product = {
   category: string;
   price: number;
   offerPrice: number;
-  image: StaticImageData[];
+  image: ProductImage[];
   rating: number;
   description: string[];
   createdAt: string;

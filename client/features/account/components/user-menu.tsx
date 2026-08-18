@@ -2,6 +2,7 @@
 
 import { useAppContext } from "@/components/providers/app-provider";
 import { ACCOUNT_MENU_ITEMS } from "@/features/account/constants/account-menu";
+import SellerMenuItem from "./seller-menu-item";
 import { LogOut } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -54,6 +55,9 @@ export default function UserMenu() {
                 </li>
               );
             })}
+            <li>
+              <SellerMenuItem className="flex w-full items-center gap-2 px-3 py-2 hover:bg-primary/10 transition-colors text-left" />
+            </li>
           </ul>
 
           <div className="border-t border-border pt-1">
