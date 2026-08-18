@@ -1,5 +1,15 @@
 import type { Product } from "@/features/products/types/product.types";
 
+export const ORDER_STATUSES = [
+  "Order Placed",
+  "Processing",
+  "Shipped",
+  "Delivered",
+  "Cancelled",
+] as const;
+
+export type OrderStatus = (typeof ORDER_STATUSES)[number];
+
 export type OrderAddress = {
   _id: string;
   userId: string;
@@ -28,7 +38,7 @@ export type Order = {
   items: OrderItem[];
   amount: number;
   address: OrderAddress;
-  status: string;
+  status: OrderStatus;
   paymentType: OrderPaymentType;
   isPaid: boolean;
   createdAt: string;

@@ -8,9 +8,10 @@ import ReviewSection from "@/features/reviews/components/review-section";
 import ShopCard from "@/features/shop/components/shop-card";
 import WishlistButton from "@/features/wishlist/components/wishlist-button";
 import ProductAbout from "./product-about";
+import ProductPhoto from "./product-photo";
 import RelatedProducts from "./related-products";
 import { toCategorySlug } from "@/lib/slug";
-import type { StaticImageData } from "next/image";
+import type { ProductImage } from "@/features/products/types/product.types";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound, useRouter } from "next/navigation";
@@ -28,7 +29,7 @@ export default function ProductDetail({
   const { currency } = useAppContext();
   const { addToCart } = useCart();
   const router = useRouter();
-  const [thumbnail, setThumbnail] = useState<StaticImageData | null>(null);
+  const [thumbnail, setThumbnail] = useState<ProductImage | null>(null);
 
   const isValidProduct = useMemo(() => {
     if (!product) return false;
@@ -93,7 +94,7 @@ export default function ProductDetail({
                       : "border-border hover:border-primary/50"
                   }`}
                 >
-                  <Image
+                  <ProductPhoto
                     src={img}
                     alt={`${product.name} thumbnail ${index + 1}`}
                     width={96}
@@ -106,7 +107,7 @@ export default function ProductDetail({
           </div>
 
           <div className="border border-border max-w-100 rounded overflow-hidden bg-card">
-            <Image
+            <ProductPhoto
               src={selectedImage}
               alt={product.name}
               className="w-full h-full object-cover"

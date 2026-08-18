@@ -3,6 +3,7 @@
 import { useAppContext } from "@/components/providers/app-provider";
 import { useCartItem } from "@/features/cart/hooks";
 import type { Product } from "@/features/products/types/product.types";
+import ProductPhoto from "@/features/products/components/product-photo";
 import { assets } from "@/constants/assets";
 import { toCategorySlug } from "@/lib/slug";
 import { ShoppingCart } from "lucide-react";
@@ -23,7 +24,7 @@ export default function WishlistItem({ product }: { product: Product }) {
       </div>
       <Link href={href} className="px-3 pt-3 md:px-4 md:pt-4 flex-1">
         <div className="flex items-center justify-center px-2">
-          <Image
+          <ProductPhoto
             className="max-w-26 md:max-w-36"
             src={product.image[0]}
             alt={product.name}

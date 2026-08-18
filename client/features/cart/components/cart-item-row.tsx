@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { useAppContext } from "@/components/providers/app-provider";
 import { useCartItem } from "@/features/cart/hooks";
 import { toCategorySlug } from "@/lib/slug";
+import ProductPhoto from "@/features/products/components/product-photo";
 import { Minus, Plus, Trash2 } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import type { CartLine } from "../types/cart.types";
 import { formatCartMoney } from "../utils/cart";
@@ -18,7 +18,7 @@ export default function CartItemRow({ line }: { line: CartLine }) {
   return (
     <article className="grid grid-cols-[auto_1fr_auto] gap-4 items-center py-4 border-b border-border last:border-b-0">
       <Link href={href} className="shrink-0">
-        <Image
+        <ProductPhoto
           src={line.product.image[0]}
           alt={line.product.name}
           width={72}

@@ -15,6 +15,7 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import UserMenu from "@/features/account/components/user-menu";
+import SellerMenuItem from "@/features/account/components/seller-menu-item";
 import { ACCOUNT_MENU_ITEMS } from "@/features/account/constants/account-menu";
 import CartIcon from "@/features/cart/components/cart-icon";
 import ProductSearch from "@/features/products/components/product-search";
@@ -182,6 +183,11 @@ export default function Navbar() {
                       );
                     })
                   : null}
+                {user ? (
+                  <SheetClose asChild>
+                    <SellerMenuItem className="flex items-center gap-2 rounded-md px-3 py-2 font-medium text-foreground transition-colors hover:bg-muted text-left" />
+                  </SheetClose>
+                ) : null}
               </nav>
 
               <SheetFooter>

@@ -3,7 +3,7 @@
 Cây hiện tại: `structure.md`. File này chỉ trả lời: **file mới để đâu.**
 
 Câu hỏi duy nhất: *file này vỡ thì hỏng nghiệp vụ nào?*  
-Có tên domain (cart, products, auth, reviews, orders, shop, account…) → **trong feature**. Không → **ngoài** (`lib/`, `components/`, `hooks/`, `config/`).
+Có tên domain (cart, products, auth, reviews, orders, shop, account, seller…) → **trong feature**. Không → **ngoài** (`lib/`, `components/`, `hooks/`, `config/`).
 
 Không tạo folder trống. Không barrel `index.ts` trừ khi public API thật sự cần.
 
@@ -25,7 +25,7 @@ Ba chỗ. Không nhét business vào `components/ui`.
 Chỉ trang /about dùng, không có API/schema?
   → app/(main)/about/_components/
 
-Product / cart / auth / review / order / shop / wishlist (có type, hook, form)?
+Product / cart / auth / review / order / shop / wishlist / seller (có type, hook, form)?
   → features/<x>/components/
 
 Dùng mọi trang buyer, không phải domain?
@@ -49,8 +49,10 @@ product-detail.tsx  →  features/shop/components/shop-card.tsx
 product-detail.tsx  →  features/wishlist/components/wishlist-button.tsx
 navbar.tsx          →  features/cart/components/cart-icon.tsx
 navbar.tsx          →  features/account/components/user-menu.tsx
+navbar.tsx          →  features/account/components/seller-menu-item.tsx
 navbar.tsx          →  features/products/components/product-search.tsx
 my-orders page      →  features/orders/components/orders-view.tsx
+seller layout       →  features/seller/components/seller-layout.tsx
 ```
 
 Không copy `ReviewSection` vào `features/products` hay `app/.../_components`.  
@@ -60,8 +62,10 @@ Nút **X** trên ô search = native browser (`type="search"`), **không** tạo 
 My Orders = nghiệp vụ `orders` → `features/orders`. Nút Add to Cart / Buy now gọi `useCart`, không copy logic giỏ vào orders.  
 Shop trên PDP = `features/shop`. **Không** copy `ShopCard` vào `features/products`. `shop` không import `ProductList` (tránh products ↔ shop).  
 Menu avatar = `features/account`. Nav không nhét My Orders / profile — những mục account chỉ trong dropdown (desktop) hoặc Sheet (mobile).  
+`SellerMenuItem` ở **account** (không import `features/seller`) — label theo `user.role`. Become a seller đổi role rồi vào dashboard.  
 Hamburger mobile = shadcn `Sheet` trong `navbar.tsx` (không tự viết overlay/click-outside). Thanh mobile **không** nhồi `ModeToggle` — theme trong Sheet.  
-Wishlist = `features/wishlist`. Một `WishlistButton` (icon tim). PDP cạnh tên; card list `absolute` góc phải trên. **Không** import `ProductCard`. State chỉ `productId[]`.
+Wishlist = `features/wishlist`. Một `WishlistButton` (icon tim). PDP cạnh tên; card list `absolute` góc phải trên. **Không** import `ProductCard`. State chỉ `productId[]`.  
+Seller dashboard = `features/seller` + `app/seller/` (ngoài `(main)`). Nav + shadcn `Sidebar`. CRUD SP = `AppContext.products`. Orders status = `features/orders` store. **Không** copy `ProductList` / `orders-view` buyer vào seller.
 
 ---
 
@@ -106,7 +110,8 @@ features/products/utils/related-products.ts # cùng category, trừ SP hiện t�
 features/products/utils/filter-products.ts  # category + search query
 features/orders/utils/orders.ts             # sort, format date/id/address
 features/shop/utils/shop.ts                 # compact count, joined duration, response time
-features/wishlist/utils/wishlist.ts         # add / remove / toggle / prune
+features/seller/utils/seller-products.ts    # slug, filter, build Product
+features/orders/utils/orders.ts             # sort, format, patch, filter seller/buyer
 ```
 
 Test được không cần Next. Hook/store **gọi** utils, không copy thuật toán vào component.
@@ -202,6 +207,12 @@ Không: form lớn, store, Zod, list product.
 | Trang My Orders | `features/orders/components/` (+ types, hook, utils) |
 | Shop trên PDP / `/shop` | `features/shop/components/shop-card.tsx` (+ types, hook, utils) |
 | Dropdown avatar | `features/account/components/user-menu.tsx` |
+| Manage store / Become a seller | `features/account/components/seller-menu-item.tsx` |
+| Seller dashboard chrome | `features/seller/components/` (layout, navbar, sidebar) |
+| Seller product list / add / edit | `features/seller/components/` + `schemas/seller-product.schema.ts` |
+| Seller orders | `features/seller/components/seller-orders.tsx` (gọi `useOrders`, **không** `orders-view`) |
+| Ảnh SP (static hoặc data URL) | `features/products/components/product-photo.tsx` |
+| Sidebar mục seller | `features/seller/constants/seller-nav.ts` |
 | Wishlist icon (PDP + card list) | `features/wishlist/components/wishlist-button.tsx` |
 | Trang `/wishlist` | `features/wishlist/components/wishlist-view.tsx` (+ item, empty, store) |
 | Empty “wishlist trống” | `features/wishlist/components/wishlist-empty.tsx` |
