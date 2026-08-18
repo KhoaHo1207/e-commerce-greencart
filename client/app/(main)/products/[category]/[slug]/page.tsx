@@ -1,7 +1,7 @@
 import { dummyProducts } from "@/constants/assets";
+import ProductDetail from "@/features/products/components/product-detail";
 import { toCategorySlug } from "@/lib/slug";
 import type { Metadata } from "next";
-import ProductDetail from "../../_components/product-detail";
 
 export async function generateMetadata({
   params,

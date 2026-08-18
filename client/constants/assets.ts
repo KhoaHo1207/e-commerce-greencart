@@ -69,6 +69,7 @@ import wheat_flour_image from "@/public/images/wheat_flour_image.png";
 import white_arrow_icon from "@/public/images/white_arrow_icon.svg";
 import whole_wheat_bread_image from "@/public/images/whole_wheat_bread_image.png";
 import yippee_image from "@/public/images/yippee_image.png";
+import yogurt_image_1 from "@/public/images/yogurt_image_1.png";
 
 export const assets = {
   logo,
@@ -850,6 +851,98 @@ export const dummyProducts = [
   },
 ];
 
+export const dummyReviews = [
+  {
+    avatar: profile_icon,
+    name: "Aisha Rahman",
+    rating: 5,
+    dateReview: "2026-03-12T09:24:00.000Z",
+    imageReview: [potato_image_1, potato_image_2],
+    content:
+      "Potatoes were firm and fresh. Cooked perfectly for fries the same evening.",
+  },
+  {
+    avatar: profile_icon,
+    name: "Daniel Cole",
+    rating: 4,
+    dateReview: "2026-03-18T14:02:11.000Z",
+    imageReview: [tomato_image],
+    content:
+      "Tomatoes arrived ripe and juicy. One was a bit soft, but overall great quality.",
+  },
+  {
+    avatar: profile_icon,
+    name: "Mei Lin",
+    rating: 5,
+    dateReview: "2026-04-02T08:41:33.000Z",
+    imageReview: [apple_image],
+    content:
+      "Crisp apples with a sweet taste. Will order this fruit box again.",
+  },
+  {
+    avatar: profile_icon,
+    name: "Omar Hassan",
+    rating: 3,
+    dateReview: "2026-04-09T18:15:47.000Z",
+    imageReview: [amul_milk_image],
+    content:
+      "Milk was fine but the delivery was later than expected. Product itself is good.",
+  },
+  {
+    avatar: profile_icon,
+    name: "Priya Nair",
+    rating: 5,
+    dateReview: "2026-04-21T11:08:02.000Z",
+    imageReview: [whole_wheat_bread_image, brown_bread_image],
+    content:
+      "Bread stayed soft for two days. Perfect for breakfast sandwiches.",
+  },
+  {
+    avatar: profile_icon,
+    name: "Lucas Meyer",
+    rating: 4,
+    dateReview: "2026-05-03T16:27:19.000Z",
+    imageReview: [carrot_image],
+    content: "Carrots were crunchy and sweet. Packaging kept everything clean.",
+  },
+  {
+    avatar: profile_icon,
+    name: "Sofia Alvarez",
+    rating: 5,
+    dateReview: "2026-05-14T07:55:40.000Z",
+    imageReview: [yogurt_image_1],
+    content:
+      "Yogurt tasted fresh and creamy. Kids loved it as an afternoon snack.",
+  },
+  {
+    avatar: profile_icon,
+    name: "Kenji Tanaka",
+    rating: 4,
+    dateReview: "2026-06-01T12:33:08.000Z",
+    imageReview: [maggi_image],
+    content:
+      "Instant noodles were as expected. Fast checkout and neat packing.",
+  },
+  {
+    avatar: profile_icon,
+    name: "Hannah Brooks",
+    rating: 2,
+    dateReview: "2026-06-18T19:46:22.000Z",
+    imageReview: [banana_image_1],
+    content:
+      "Bananas were more ripe than I wanted. Still edible, but I prefer greener ones.",
+  },
+  {
+    avatar: profile_icon,
+    name: "Noah Patel",
+    rating: 5,
+    dateReview: "2026-07-07T10:12:54.000Z",
+    imageReview: [orange_image, grapes_image_1],
+    content:
+      "Fruit mix was colorful and fragrant. Great value for a weekly grocery run.",
+  },
+];
+
 export const dummyAddress = [
   {
     _id: "67b5b9e54ea97f71bbc196a0",
@@ -909,3 +1002,18 @@ export const dummyOrders = [
     updatedAt: "2025-03-25T07:17:13.068Z",
   },
 ];
+
+export const dummyShop = {
+  _id: "67b5880e4d09769c5ca61644",
+  slug: "greencart-official",
+  name: "GreenCart Official",
+  avatar: profile_icon,
+  isOnline: true,
+  rating: 4.8,
+  ratingCount: 1284,
+  productCount: dummyProducts.length,
+  responseRate: 97,
+  responseTimeMinutes: 15,
+  joinedAt: "2023-03-18T00:00:00.000Z",
+  followerCount: 18200,
+};

@@ -1,9 +1,8 @@
 import { dummyCategories } from "@/constants/assets";
+import ProductsView from "@/features/products/components/products-view";
+import { parseSearchQuery } from "@/features/products/utils/filter-products";
 import { toCategorySlug } from "@/lib/slug";
 import type { Metadata } from "next";
-import CategoryNav from "../_components/category";
-import ProductList from "../_components/product-list";
-import ProductsHeading from "../_components/products-heading";
 
 export async function generateMetadata({
   params,
@@ -22,13 +21,9 @@ export async function generateMetadata({
 
 export default async function ProductCategoryPage({
   params,
+  searchParams,
 }: PageProps<"/products/[category]">) {
   const { category } = await params;
-  return (
-    <div className="mt-16 flex flex-col">
-      <ProductsHeading />
-      <CategoryNav />
-      <ProductList category={category} />
-    </div>
-  );
+  const { q } = await searchParams;
+  return <ProductsView category={category} query={parseSearchQuery(q)} />;
 }

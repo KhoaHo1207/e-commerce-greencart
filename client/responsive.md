@@ -39,8 +39,8 @@ Tailwind mặc định (min-width):
 | Prefix | Từ | Dùng cho |
 |---|---|---|
 | (không prefix) | 0 | Điện thoại |
-| `sm` | 640px | Điện thoại lớn / máy nhỏ ngang |
-| `md` | 768px | Tablet, bắt đầu hiện nav desktop |
+| `sm` | 640px | Điện thoại lớn / máy nhỏ ngang. **Nav desktop GreenCart hiện từ đây** (`hidden sm:flex`) |
+| `md` | 768px | Tablet |
 | `lg` | 1024px | Laptop |
 | `xl` | 1280px | Màn rộng |
 | `2xl` | 1536px | Rất rộng — **hiếm khi cần** |
@@ -81,7 +81,7 @@ px-6 md:px-16 lg:px-24 xl:px-32
 Quy tắc:
 
 - Navbar / footer / 404 header dùng **cùng** bộ class này
-- `main` trong `app-layout` đang thiếu `px-6` trên mobile — khi sửa layout, thêm `px-6` cho khớp navbar
+- `main` trong `app-layout` **đã** `px-6 md:px-16 lg:px-24 xl:px-32` — đừng thêm gutter trong page
 - Không nhồi thêm `px-4` lung tung trong từng page nếu layout đã padding
 
 Sai:
@@ -174,8 +174,21 @@ Dùng `hidden` / `md:flex` khi **cấu trúc** đổi (menu desktop vs hamburger
 
 ```tsx
 <div className="hidden sm:flex">...menu desktop...</div>
-<button className="sm:hidden" aria-label="Menu">...</button>
+<Sheet>
+  <SheetTrigger asChild>
+    <Button variant="ghost" size="icon" className="sm:hidden" aria-label="Open menu">
+      <Menu />
+    </Button>
+  </SheetTrigger>
+  <SheetContent side="right">...</SheetContent>
+</Sheet>
 ```
+
+Hamburger = shadcn `Sheet` (overlay bấm ngoài / X / chọn link → đóng). **Không** tự viết panel `absolute` + `useState` click-outside.
+
+Thanh mobile **không nhồi 4 icon**. Hiện tại: search + cart + menu. `ModeToggle` để **trong Sheet**. Logo `w-28 sm:w-34 md:w-38` — đừng để `w-34` trên 375px.
+
+`CartIcon` luôn `size-8` (vùng bấm + badge nằm trong ô, không `-right-3` đè nút bên cạnh).
 
 Đúng (banner ảnh khác nhau vì crop):
 
@@ -226,7 +239,7 @@ className="h-6 w-6"            // icon-only, quá nhỏ
 className="text-[10px] p-1"
 ```
 
-Chip category (`px-4 py-2`) chấp nhận được vì vùng bấm rộng theo chữ. Icon navbar nên `size-8` hoặc thêm padding.
+Chip category (`px-4 py-2`) chấp nhận được vì vùng bấm rộng theo chữ. Icon navbar: `Button size="icon"` hoặc `CartIcon` `size-8`. Tim wishlist trên card: overlay góc phải, không chen hàng nút Add.
 
 ---
 
@@ -266,10 +279,11 @@ className="w-full"
 1. Chrome DevTools: 375 / 768 / 1280. Không chỉ desktop.
 2. Grid: card có fill cột không, hay còn lỗ trống vì `max-w-*`?
 3. Padding trái navbar có khớp nội dung bên dưới không?
-4. Nút/link trên mobile có bấm trượt không (quá nhỏ / chồng nhau)?
+4. Nút/link trên mobile có bấm trượt không (quá nhỏ / chồng nhau)? Thanh navbar có chật vì quá nhiều icon không?
 5. Có `hidden md:block` copy nội dung kép không?
 6. Ảnh có bị vỡ / crop chữ trên banner mobile không?
 7. Dark mode: chỗ nào nằm trên **ảnh sáng** thì không dùng token `foreground`.
+8. Hamburger: bấm vùng trống (overlay Sheet) có đóng không?
 
 ---
 
@@ -299,11 +313,13 @@ className="w-full"
 className="px-6 md:px-16 lg:px-24 xl:px-32"
 ```
 
-**CTA**
+**CTA (PDP — không nhét wishlist vào hàng này)**
 
 ```tsx
 className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3"
 ```
+
+Wishlist = icon tim cạnh tên (PDP) hoặc `absolute top-1 right-1` trên card list.
 
 ---
 

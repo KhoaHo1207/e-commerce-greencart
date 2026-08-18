@@ -1,4 +1,4 @@
-import Logo from "@/components/logo";
+import Logo from "@/components/layout/logo";
 import { Leaf } from "lucide-react";
 import type { Metadata } from "next";
 import Link from "next/link";
